@@ -113,7 +113,7 @@ export function RootErrorBoundary() {
 
               <Link
                 to="/"
-                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border border-[var(--border-soft)] bg-white/60 dark:bg-white/8 px-8 py-4 text-sm font-bold text-slate-900 dark:text-white backdrop-blur-xl hover:border-[var(--brand-gold)] hover:bg-white dark:hover:bg-white/12 transition cursor-pointer"
+                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full border border-[var(--border-soft)] bg-white/94 dark:bg-[#0c1622] px-8 py-4 text-sm font-bold text-slate-900 dark:text-white hover:border-[var(--brand-gold)] hover:bg-white dark:hover:bg-[#111e2e] transition cursor-pointer"
               >
                 <Home className="h-4 w-4" />
                 Back to Home

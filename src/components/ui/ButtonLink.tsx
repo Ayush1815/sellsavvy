@@ -27,7 +27,7 @@ export function ButtonLink({ to, children, variant = "primary", trackLabel }: Bu
           variant === "primary" &&
             "bg-[var(--brand-gold)] text-[#071122] shadow-[0_16px_34px_-26px_rgba(207,156,45,0.58)] hover:bg-[var(--brand-gold-hover)] hover:shadow-[0_18px_38px_-30px_rgba(185,130,22,0.52)] dark:text-[#071122]",
           variant === "secondary" &&
-            "border border-[var(--border-soft)] bg-white/60 text-slate-900 backdrop-blur-xl hover:border-[var(--brand-gold)] hover:bg-white dark:bg-white/8 dark:text-white dark:hover:border-[var(--brand-gold)] dark:hover:bg-white/12",
+            "border border-[var(--border-soft)] bg-white/94 text-slate-900 hover:border-[var(--brand-gold)] hover:bg-white dark:bg-[#0c1622] dark:text-white dark:hover:border-[var(--brand-gold)] dark:hover:bg-[#111e2e]",
           variant === "dark" &&
             "bg-slate-950 text-white shadow-[0_18px_50px_-28px_rgba(2,6,23,0.9)] hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100",
         )}
