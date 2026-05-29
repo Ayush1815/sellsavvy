@@ -2,6 +2,7 @@ import { lazy, Suspense, type ReactNode } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { AppShell } from "./layouts/AppShell";
 import { RouteLoader } from "./components/loaders/RouteLoader";
+import { RootErrorBoundary } from "./components/ui/RootErrorBoundary";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppShell />,
+    errorElement: <RootErrorBoundary />,
     children: [
       { index: true, element: withSuspense(<HomePage />) },
       { path: "services", element: withSuspense(<ServicesPage />) },

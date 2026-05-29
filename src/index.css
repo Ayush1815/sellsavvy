@@ -344,6 +344,14 @@
   background-size: 18px 18px, 23px 23px;
 }
 
+.shine-button {
+  position: relative;
+  isolation: isolate;
+  transform: translateZ(0); /* Hardware accelerated clipping of rounded borders */
+  background-clip: padding-box; /* Avoid backdrop-filter bleed and subpixel layout glitches */
+  backface-visibility: hidden;
+}
+
 .shine-button::before {
   content: "";
   position: absolute;
