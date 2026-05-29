@@ -24,7 +24,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <nav
-        className="mx-auto flex h-[5.8rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-[5.55rem] lg:px-8"
+        className="mx-auto flex h-[5.8rem] max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:h-[5.55rem] lg:px-8"
         aria-label="Main navigation"
       >
         <BrandMark animationKey={theme} />

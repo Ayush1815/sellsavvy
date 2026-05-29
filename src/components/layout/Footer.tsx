@@ -7,7 +7,7 @@ import { navItems } from "../../data/navItems";
 export function Footer() {
   return (
     <footer className="border-t border-[var(--border-soft)] bg-[var(--surface-light-elevated)] py-14 dark:bg-[var(--surface-dark)]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_0.8fr]">
           <div>
             <BrandMark variant="footer" />
