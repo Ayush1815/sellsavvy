@@ -57,7 +57,7 @@ export function CaseStudiesSection() {
                 className={classNames(
                   "rounded-full border px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)]",
                   category === value
-                    ? "border-[var(--brand-gold)] bg-[var(--brand-gold)] text-[#071122]"
+                    ? "border-[var(--brand-gold)] bg-[var(--brand-gold)] text-[#071122] dark:bg-white dark:border-white dark:text-[var(--brand-navy)]"
                     : "border-[var(--border-soft)] bg-white/70 text-slate-700 hover:border-[var(--brand-gold)] dark:bg-white/7 dark:text-slate-200",
                 )}
               >
