@@ -36,7 +36,7 @@ export function AppSplash({ onDone }: { onDone: () => void }) {
     >
       <div className="loader-brand-card flex flex-col items-center gap-5 text-center">
         <motion.img
-          src="/brand/sellsavvy-mark-transparent.png"
+          src="/brand/sellsavvy-mark-transparent.webp"
           alt="SellSavvy Logo"
           width={160}
           height={128}

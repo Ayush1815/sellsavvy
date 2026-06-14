@@ -10,8 +10,7 @@ export function RootErrorBoundary() {
   // Sync theme with localStorage
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("sellsavvy-theme") as "light" | "dark" | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const activeTheme = savedTheme || systemTheme;
+    const activeTheme = savedTheme || "dark";
     setTheme(activeTheme);
     document.documentElement.classList.toggle("dark", activeTheme === "dark");
   }, []);

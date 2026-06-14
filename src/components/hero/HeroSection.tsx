@@ -51,16 +51,16 @@ export function HeroSection() {
                 hidden: { opacity: 0, y: 18 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
               }}
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-white/50 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-700 shadow-sm backdrop-blur-xl dark:bg-white/5 dark:text-[var(--brand-gold-muted)]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-soft)] bg-white/50 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-slate-700 shadow-sm backdrop-blur-xl dark:bg-white/5 dark:text-[var(--brand-gold-muted)]"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" />
+              <Sparkles className="h-3 w-3 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" />
               Ecommerce growth partner
             </motion.p>
 
             {/* Headline */}
             <h1
               aria-label="You sell. We manage. We scale together."
-              className="mt-5 text-[2.4rem] font-black leading-[1.2] tracking-tight text-slate-900 sm:text-5xl sm:leading-[1.18] lg:text-6xl xl:text-[4rem] dark:text-white"
+              className="mt-5 text-[2rem] font-black leading-[1.2] tracking-tight text-slate-900 sm:text-4xl sm:leading-[1.18] lg:text-5xl xl:text-[3.25rem] dark:text-white"
             >
               <span aria-hidden="true" className="block overflow-visible pb-1 pt-0.5">
                 <motion.span
@@ -105,7 +105,7 @@ export function HeroSection() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 1.6 } },
               }}
-              className="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300"
+              className="mt-4 max-w-lg text-sm leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300"
             >
               SellSavvy manages the moving parts of ecommerce growth: marketplace
               operations, storefront development, product creatives, SEO, and
@@ -121,7 +121,7 @@ export function HeroSection() {
               className="mt-8 flex flex-wrap gap-3"
             >
               <ButtonLink to="/contact">Book Free Growth Audit</ButtonLink>
-              <ButtonLink to="/growth-system" variant="secondary">
+              <ButtonLink to="/#growth-system" variant="secondary">
                 Explore Growth System
               </ButtonLink>
             </motion.div>
@@ -131,7 +131,7 @@ export function HeroSection() {
         {/* ── Right: Hero Visual ── */}
         <Reveal
           delay={0.3}
-          className="relative z-10 flex w-full items-center justify-center overflow-visible lg:justify-end"
+          className="relative z-10 flex w-full min-w-0 items-center justify-center overflow-hidden lg:justify-start lg:mt-16 xl:mt-24"
         >
           <HeroVisual />
         </Reveal>

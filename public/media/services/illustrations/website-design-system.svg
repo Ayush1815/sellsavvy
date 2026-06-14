@@ -1,0 +1,44 @@
+<svg width="1536" height="1024" viewBox="0 0 1536 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1536" height="1024" rx="48" fill="#F8FAF7"/>
+  <rect x="80" y="86" width="1376" height="852" rx="42" fill="#FFFFFF" stroke="#D8E0EA" stroke-width="2"/>
+  <circle cx="1226" cy="208" r="210" fill="#E8F1FF"/>
+  <circle cx="338" cy="790" r="180" fill="#F4E8C8"/>
+  <rect x="170" y="180" width="710" height="476" rx="34" fill="#071827"/>
+  <rect x="202" y="222" width="646" height="392" rx="18" fill="#0B2540"/>
+  <rect x="232" y="252" width="190" height="24" rx="12" fill="#E4BD60"/>
+  <rect x="232" y="304" width="356" height="38" rx="19" fill="#F8FAFC"/>
+  <rect x="232" y="366" width="276" height="18" rx="9" fill="#9DB2C8"/>
+  <rect x="232" y="402" width="318" height="18" rx="9" fill="#6F879F"/>
+  <rect x="232" y="466" width="158" height="54" rx="16" fill="#0F6DFF"/>
+  <rect x="420" y="466" width="126" height="54" rx="16" fill="#102F4D" stroke="#35516D" stroke-width="2"/>
+  <rect x="616" y="288" width="184" height="254" rx="28" fill="#F8FAFC"/>
+  <rect x="640" y="320" width="136" height="84" rx="18" fill="#DDEBFF"/>
+  <rect x="640" y="428" width="94" height="16" rx="8" fill="#0B2540"/>
+  <rect x="640" y="458" width="118" height="12" rx="6" fill="#9DB2C8"/>
+  <rect x="640" y="488" width="78" height="34" rx="12" fill="#E4BD60"/>
+  <rect x="980" y="250" width="312" height="580" rx="46" fill="#101926"/>
+  <rect x="1010" y="306" width="252" height="468" rx="32" fill="#F8FAFC"/>
+  <rect x="1042" y="348" width="104" height="16" rx="8" fill="#0B2540"/>
+  <rect x="1042" y="386" width="184" height="128" rx="24" fill="#E8F1FF"/>
+  <path d="M1074 474C1100 424 1138 422 1164 456C1184 482 1200 472 1226 430V514H1074V474Z" fill="#0F6DFF"/>
+  <rect x="1042" y="552" width="184" height="14" rx="7" fill="#0B2540"/>
+  <rect x="1042" y="584" width="136" height="12" rx="6" fill="#9DB2C8"/>
+  <rect x="1042" y="616" width="112" height="44" rx="14" fill="#0F6DFF"/>
+  <rect x="592" y="710" width="344" height="140" rx="28" fill="#FFFFFF" stroke="#D8E0EA" stroke-width="2"/>
+  <rect x="626" y="748" width="52" height="52" rx="16" fill="#E4BD60"/>
+  <rect x="704" y="746" width="188" height="16" rx="8" fill="#0B2540"/>
+  <rect x="704" y="782" width="136" height="12" rx="6" fill="#9DB2C8"/>
+  <rect x="704" y="812" width="164" height="12" rx="6" fill="#C4D0DE"/>
+  <path d="M358 686H768" stroke="#CF9C2D" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 20"/>
+  <path d="M878 512H980" stroke="#0F6DFF" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <rect x="160" y="704" width="278" height="108" rx="26" fill="#FFFFFF" stroke="#D8E0EA" stroke-width="2"/>
+  <rect x="194" y="738" width="46" height="46" rx="14" fill="#0F6DFF"/>
+  <rect x="262" y="740" width="126" height="14" rx="7" fill="#0B2540"/>
+  <rect x="262" y="772" width="96" height="12" rx="6" fill="#9DB2C8"/>
+  <rect x="1112" y="146" width="226" height="74" rx="24" fill="#FFFFFF" stroke="#D8E0EA" stroke-width="2"/>
+  <circle cx="1154" cy="183" r="19" fill="#1F766F"/>
+  <rect x="1190" y="170" width="104" height="12" rx="6" fill="#0B2540"/>
+  <rect x="1190" y="196" width="70" height="10" rx="5" fill="#9DB2C8"/>
+  <text x="170" y="126" fill="#0B2540" font-family="Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="3">WEBSITE DESIGN SYSTEM</text>
+  <text x="170" y="878" fill="#46566E" font-family="Arial, sans-serif" font-size="24" font-weight="700">Responsive layouts, conversion paths, SEO structure, and launch QA in one visual plan.</text>
+</svg>

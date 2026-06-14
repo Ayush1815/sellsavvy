@@ -5,10 +5,8 @@ import { RouteLoader } from "./components/loaders/RouteLoader";
 import { RootErrorBoundary } from "./components/ui/RootErrorBoundary";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
-const GrowthSystemPage = lazy(() => import("./pages/GrowthSystemPage"));
-const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
-const CaseStudyDetailPage = lazy(() => import("./pages/CaseStudyDetailPage"));
 const ChannelLanderPage = lazy(() => import("./pages/ChannelLanderPage"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
@@ -27,11 +25,9 @@ export const router = createBrowserRouter([
     errorElement: <RootErrorBoundary />,
     children: [
       { index: true, element: withSuspense(<HomePage />) },
+      { path: "about", element: withSuspense(<AboutUsPage />) },
       { path: "services", element: withSuspense(<ServicesPage />) },
       { path: "services/:channelSlug", element: withSuspense(<ChannelLanderPage />) },
-      { path: "growth-system", element: withSuspense(<GrowthSystemPage />) },
-      { path: "case-studies", element: withSuspense(<CaseStudiesPage />) },
-      { path: "case-studies/:slug", element: withSuspense(<CaseStudyDetailPage />) },
       { path: "faq", element: withSuspense(<FaqPage />) },
       { path: "contact", element: withSuspense(<ContactPage />) },
       { path: "privacy", element: withSuspense(<PrivacyPolicyPage />) },

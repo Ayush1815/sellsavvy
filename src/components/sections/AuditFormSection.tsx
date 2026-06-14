@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Clock, Globe, Mail, Phone } from "lucide-react";
 import { initialAuditForm, type AuditForm } from "../../data/auditForm";
 import { siteConfig } from "../../config/site";
@@ -8,6 +8,7 @@ import { trackEvent } from "../../lib/analytics";
 import { AuditSubmitError, submitAudit } from "../../lib/submitAudit";
 import { Reveal, SectionHeader } from "../ui/Reveal";
 import { ButtonLink } from "../ui/ButtonLink";
+import { CustomSelect } from "../ui/CustomSelect";
 
 export function AuditFormSection() {
   const [form, setForm] = useState<AuditForm>(initialAuditForm);
@@ -187,39 +188,50 @@ export function AuditFormSection() {
 
               <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
                 Main platform
-                <select value={form.platform} onChange={(event) => updateField("platform", event.target.value)} className={fieldBase}>
-                  <option>Amazon / Flipkart</option>
-                  <option>Shopify / D2C website</option>
-                  <option>WooCommerce</option>
-                  <option>Meesho</option>
-                  <option>Multiple channels</option>
-                </select>
+                <CustomSelect
+                  value={form.platform}
+                  onChange={(value) => updateField("platform", value)}
+                  options={[
+                    "Amazon / Flipkart",
+                    "Shopify / D2C website",
+                    "WooCommerce",
+                    "Meesho",
+                    "Multiple channels"
+                  ]}
+                  className={fieldBase}
+                />
               </label>
 
               <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
                 Monthly revenue
-                <select
+                <CustomSelect
                   value={form.monthlyRevenue}
-                  onChange={(event) => updateField("monthlyRevenue", event.target.value)}
+                  onChange={(value) => updateField("monthlyRevenue", value)}
+                  options={[
+                    "Under $10k",
+                    "$10k - $50k",
+                    "$50k - $150k",
+                    "$150k+",
+                    "Pre-launch"
+                  ]}
                   className={fieldBase}
-                >
-                  <option>Under $10k</option>
-                  <option>$10k - $50k</option>
-                  <option>$50k - $150k</option>
-                  <option>$150k+</option>
-                  <option>Pre-launch</option>
-                </select>
+                />
               </label>
 
               <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 sm:col-span-2">
                 Growth goal
-                <select value={form.goal} onChange={(event) => updateField("goal", event.target.value)} className={fieldBase}>
-                  <option>Improve marketplace sales</option>
-                  <option>Improve ads and ROAS</option>
-                  <option>Build or improve website</option>
-                  <option>Improve creative and content</option>
-                  <option>Need ongoing growth support</option>
-                </select>
+                <CustomSelect
+                  value={form.goal}
+                  onChange={(value) => updateField("goal", value)}
+                  options={[
+                    "Improve marketplace sales",
+                    "Improve ads and ROAS",
+                    "Build or improve website",
+                    "Improve creative and content",
+                    "Need ongoing growth support"
+                  ]}
+                  className={fieldBase}
+                />
               </label>
             </div>
 
@@ -271,7 +283,7 @@ export function AuditFormSection() {
                       Pick a time on our calendar
                     </a>
                   ) : (
-                    <ButtonLink to="/growth-system" variant="secondary">
+                    <ButtonLink to="/#growth-system" variant="secondary">
                       See how our growth system works
                     </ButtonLink>
                   )}

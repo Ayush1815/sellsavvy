@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import type { Theme } from "../../types/theme";
 import { navItems } from "../../data/navItems";
 import { classNames } from "../../lib/classNames";
@@ -22,9 +21,9 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   }, [location.pathname]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-6 lg:px-8">
       <nav
-        className="mx-auto flex h-[5.8rem] max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:h-[5.55rem] lg:px-8"
+        className="mx-auto flex max-w-[1280px] items-center justify-between gap-3"
         aria-label="Main navigation"
       >
         <BrandMark animationKey={theme} />
@@ -66,9 +65,28 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/70 text-slate-950 backdrop-blur-xl transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] dark:bg-white/8 dark:text-white"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/70 text-slate-950 backdrop-blur-xl transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] dark:bg-white/8 dark:text-white"
           >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <motion.span
+              animate={mobileOpen ? "open" : "closed"}
+              className="absolute inset-0 flex flex-col items-center justify-center gap-1"
+            >
+              <motion.span
+                variants={{ closed: { rotate: 0, y: 0 }, open: { rotate: 45, y: 6 } }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="h-0.5 w-4 bg-current"
+              />
+              <motion.span
+                variants={{ closed: { opacity: 1 }, open: { opacity: 0 } }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="h-0.5 w-4 bg-current"
+              />
+              <motion.span
+                variants={{ closed: { rotate: 0, y: 0 }, open: { rotate: -45, y: -6 } }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="h-0.5 w-4 bg-current"
+              />
+            </motion.span>
           </button>
         </div>
       </nav>
@@ -76,10 +94,11 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="mx-4 rounded-[1.5rem] border border-[var(--border-soft)] bg-[rgba(248,250,247,0.94)] px-4 py-4 shadow-[0_24px_60px_-34px_rgba(11,37,64,0.55)] backdrop-blur-xl dark:bg-[rgba(7,16,23,0.94)] lg:hidden"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-x-4 top-[5.5rem] rounded-[1.5rem] border border-[var(--border-soft)] bg-[rgba(248,250,247,0.94)] px-4 py-4 shadow-[0_24px_60px_-34px_rgba(11,37,64,0.55)] backdrop-blur-xl dark:bg-[rgba(7,16,23,0.94)] lg:hidden"
           >
             <div className="mx-auto grid max-w-7xl gap-2">
               <div className="mb-2 flex items-center justify-between rounded-2xl border border-slate-200 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/7">

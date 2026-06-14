@@ -53,7 +53,7 @@ export function HeroVisual() {
     videoRef.current.playbackRate = 1.15;
   }, [reducedMotion, theme]);
 
-  const source = theme === "dark" ? "/media/Dark_Theme.mp4" : "/media/Light_Theme.mp4";
+  const source = theme === "dark" ? "/media/Dark.mp4" : "/media/lllll.mp4";
 
   useEffect(() => {
     setReady(false);
@@ -68,24 +68,39 @@ export function HeroVisual() {
         {reducedMotion ? (
           <div className="hero-video-fallback" aria-label="Static SellSavvy growth dashboard preview" />
         ) : (
-          <video
-            key={source}
-            ref={videoRef}
-            src={source}
-            className={`hero-video pointer-events-none transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            onLoadedData={() => setReady(true)}
-            onCanPlay={() => {
-              setReady(true);
-              const playPromise = videoRef.current?.play();
-              if (playPromise) void playPromise.catch(() => undefined);
-            }}
-            aria-label={`${theme === "dark" ? "Dark" : "Light"} theme SellSavvy growth dashboard animation`}
-          />
+          <div className="hero-video-wrapper">
+            <video
+              key={source}
+              ref={videoRef}
+              src={source}
+              className={`hero-video pointer-events-none transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              onLoadedData={() => setReady(true)}
+              onCanPlay={() => {
+                setReady(true);
+                const playPromise = videoRef.current?.play();
+                if (playPromise) void playPromise.catch(() => undefined);
+              }}
+              aria-label={`${theme === "dark" ? "Dark" : "Light"} theme SellSavvy growth dashboard animation`}
+            />
+            {ready && (
+              <div
+                className="absolute z-10 flex flex-col items-center justify-center rounded-2xl border border-slate-200/50 bg-white/80 px-4 py-2 text-[0.65rem] sm:text-[0.7rem] font-bold text-slate-700 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-300 leading-tight text-center whitespace-nowrap"
+                style={{
+                  top: "84%",
+                  left: "88%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <span>Begin your growth</span>
+                <span>with SellSavvy today!</span>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

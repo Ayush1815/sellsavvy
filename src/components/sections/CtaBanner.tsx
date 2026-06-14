@@ -1,12 +1,13 @@
 import { Check } from "lucide-react";
 import { ButtonLink } from "../ui/ButtonLink";
 import { Reveal } from "../ui/Reveal";
+import { classNames } from "../../lib/classNames";
 
-export function CtaBanner() {
+export function CtaBanner({ className }: { className?: string }) {
   return (
-    <section className="px-4 py-10 sm:px-6 lg:px-8">
+    <section className={classNames("px-4 py-10 sm:px-6 lg:px-8", className)}>
       <Reveal>
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-8 text-[var(--text-primary)] shadow-[0_34px_110px_-70px_rgba(11,37,64,0.62)] dark:bg-[var(--brand-navy-900)] dark:text-white sm:p-10 lg:p-12">
+        <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[2rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-8 text-[var(--text-primary)] shadow-[0_34px_110px_-70px_rgba(11,37,64,0.62)] dark:bg-[var(--brand-navy-900)] dark:text-white sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.7fr] lg:items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]">Free growth audit</p>

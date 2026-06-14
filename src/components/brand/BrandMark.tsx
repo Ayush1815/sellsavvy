@@ -22,7 +22,7 @@ export function BrandMark({ animationKey = "static", variant = "header" }: Brand
       >
         <span className="brand-mark-logo-surface flex shrink-0 items-center justify-center">
           <img
-            src="/brand/sellsavvy-mark-transparent.png"
+            src="/brand/sellsavvy-mark-transparent.webp"
             alt="SellSavvy logo"
             width={52}
             height={42}
