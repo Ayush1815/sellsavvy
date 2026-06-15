@@ -30,7 +30,7 @@ export function AboutHero() {
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--brand-gold-muted)]/15 to-transparent rounded-[2rem] -z-10 blur-xl" />
               <img 
                 src="/media/about/hero.png" 
-                alt="Sleek glassmorphic strategic ecommerce growth arrow" 
+                alt="Premium dark-themed e-commerce analytics dashboard with glowing amber and gold charts" 
                 className="w-full h-full object-cover rounded-[2rem] border border-[var(--border-soft)] shadow-2xl"
               />
             </Reveal>
