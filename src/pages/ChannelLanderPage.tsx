@@ -449,7 +449,7 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
   return (
     <aside className="relative flex h-full flex-col overflow-hidden rounded-[1.9rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-3 shadow-[0_24px_60px_-24px_rgba(11,37,64,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-[#071017] dark:shadow-[0_36px_100px_-58px_rgba(7,16,23,0.9)]">
       {isWebsiteDevelopment ? (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
           <SplineViewerScene
             sceneUrl={splineHeroScene.sceneUrl}
             fallbackImage={splineHeroScene.fallbackImage}
@@ -464,19 +464,19 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
           </div>
         </figure>
       ) : (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[18rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-[var(--surface-light-elevated)] to-transparent dark:from-[#071017] sm:hidden" />
           <img
             src={visual.hero.light}
             alt={visual.hero.alt}
-            className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 hover:scale-[1.015] dark:hidden"
+            className="absolute inset-0 h-full w-full object-contain sm:object-cover object-center transition duration-700 hover:scale-[1.015] dark:hidden"
             loading="eager"
           />
           <img
             src={visual.hero.dark}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 hidden h-full w-full object-cover object-center transition duration-700 hover:scale-[1.015] dark:block"
+            className="absolute inset-0 hidden h-full w-full object-contain sm:object-cover object-center transition duration-700 hover:scale-[1.015] dark:block"
             loading="eager"
           />
           <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/72 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
@@ -605,7 +605,7 @@ function ServiceSectionMedia({
         <img
           src={image}
           alt={alt}
-          className={classNames("w-full object-cover", compact ? "aspect-[16/9]" : "aspect-[4/3]")}
+          className={classNames("w-full object-contain sm:object-cover", compact ? "aspect-auto sm:aspect-[16/9]" : "aspect-auto sm:aspect-[4/3]")}
           loading="lazy"
         />
       </div>
