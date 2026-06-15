@@ -33,7 +33,7 @@ export function HeroSection() {
         - Mobile (<lg): single column — text then video stacked, with padding for fixed header
         - Desktop (lg+): two columns side-by-side, vertically centered in viewport height
       */}
-      <div className="mx-auto grid w-full max-w-[1440px] items-center gap-10 px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(380px,0.88fr)_minmax(0,1.12fr)] lg:gap-8 lg:pl-8 lg:pr-0 lg:py-0 2xl:gap-10">
+      <div className="mx-auto grid w-full max-w-[1440px] items-center gap-6 px-4 pb-16 pt-24 sm:gap-10 sm:px-6 sm:pb-20 sm:pt-32 lg:min-h-[100svh] lg:grid-cols-[minmax(380px,0.88fr)_minmax(0,1.12fr)] lg:gap-8 lg:pl-8 lg:pr-0 lg:py-0 2xl:gap-10">
 
         {/* ── Left: Text Content ── */}
         <div className="relative z-10 flex w-full flex-col justify-center lg:py-24">
@@ -60,7 +60,7 @@ export function HeroSection() {
             {/* Headline */}
             <h1
               aria-label="You sell. We manage. We scale together."
-              className="mt-5 text-[2rem] font-black leading-[1.2] tracking-tight text-slate-900 sm:text-4xl sm:leading-[1.18] lg:text-5xl xl:text-[3.25rem] dark:text-white"
+              className="mt-5 text-[1.75rem] font-black leading-[1.2] tracking-tight text-slate-900 sm:text-4xl sm:leading-[1.18] lg:text-5xl xl:text-[3.25rem] dark:text-white"
             >
               <span aria-hidden="true" className="block overflow-visible pb-1 pt-0.5">
                 <motion.span
@@ -118,10 +118,10 @@ export function HeroSection() {
                 hidden: { opacity: 0, y: 18 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 1.75 } },
               }}
-              className="mt-8 flex flex-wrap gap-3"
+              className="mt-8 flex flex-col w-full gap-3 sm:w-auto sm:flex-row sm:flex-wrap"
             >
-              <ButtonLink to="/contact">Book Free Growth Audit</ButtonLink>
-              <ButtonLink to="/#growth-system" variant="secondary">
+              <ButtonLink to="/contact" className="w-full sm:w-auto">Book Free Growth Audit</ButtonLink>
+              <ButtonLink to="/#growth-system" variant="secondary" className="w-full sm:w-auto">
                 Explore Growth System
               </ButtonLink>
             </motion.div>

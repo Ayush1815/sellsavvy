@@ -9,11 +9,12 @@ type ButtonLinkProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "dark";
   trackLabel?: string;
+  className?: string;
 };
 
-export function ButtonLink({ to, children, variant = "primary", trackLabel }: ButtonLinkProps) {
+export function ButtonLink({ to, children, variant = "primary", trackLabel, className }: ButtonLinkProps) {
   return (
-    <motion.div whileTap={{ scale: 0.98 }} whileHover={{ y: -2 }} className="inline-flex">
+    <motion.div whileTap={{ scale: 0.97 }} whileHover={{ y: -2 }} className={classNames("inline-flex", className)}>
       <Link
         to={to}
         onClick={() =>
@@ -23,7 +24,7 @@ export function ButtonLink({ to, children, variant = "primary", trackLabel }: Bu
           })
         }
         className={classNames(
-          "shine-button group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] focus-visible:ring-offset-2",
+          "shine-button group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-5 py-3 sm:px-6 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] focus-visible:ring-offset-2 active:scale-[0.97]",
           variant === "primary" &&
             "bg-[var(--brand-gold)] text-[#071122] shadow-[0_16px_34px_-26px_rgba(207,156,45,0.58)] hover:bg-[var(--brand-gold-hover)] hover:shadow-[0_18px_38px_-30px_rgba(185,130,22,0.52)] dark:text-[#071122]",
           variant === "secondary" &&

@@ -21,18 +21,18 @@ export function ServicesSection() {
         </div>
 
         <div className="mt-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
-          <div className="flex flex-wrap gap-3">
+          <div className="-mx-4 flex flex-nowrap overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-x-visible sm:px-0 sm:pb-0 gap-3">
             {channelLanders.map((channel) => (
               <Link
                 key={channel.slug}
                 to={`/services/${channel.slug}`}
-                className="rounded-full border border-[var(--border-soft)] bg-white/80 px-5 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--brand-gold)] hover:text-[var(--brand-gold-muted)] hover:shadow-md dark:bg-white/7 dark:text-slate-200 dark:hover:text-[var(--brand-gold)]"
+                className="shrink-0 rounded-full border border-[var(--border-soft)] bg-white/80 px-5 py-2.5 text-sm font-bold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--brand-gold)] hover:text-[var(--brand-gold-muted)] hover:shadow-md dark:bg-white/7 dark:text-slate-200 dark:hover:text-[var(--brand-gold)]"
               >
                 {channel.platform} growth
               </Link>
             ))}
           </div>
-          <Reveal className="w-full lg:max-w-sm lg:shrink-0 rounded-3xl border border-slate-200 bg-white/70 p-5 text-sm leading-7 text-slate-600 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.6)] dark:border-white/10 dark:bg-white/7 dark:text-slate-300">
+          <Reveal className="w-full lg:max-w-sm lg:shrink-0 rounded-3xl border border-slate-200 bg-white/70 p-5 text-sm leading-7 text-slate-600 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.6)] dark:border-white/10 dark:bg-white/7 dark:text-slate-300 relative before:absolute before:inset-0 before:-z-10 before:rounded-3xl before:bg-gradient-to-br before:from-[var(--brand-gold-soft)] before:to-transparent before:opacity-50 sm:before:hidden">
             Start with the audit. We will identify the route with the fastest operational payoff, then build the plan around your channels, margins, and team capacity.
           </Reveal>
         </div>
@@ -44,6 +44,7 @@ export function ServicesSection() {
               <Reveal key={service.title} delay={Math.min(index * 0.04, 0.22)} className="h-full">
                 <motion.article
                   whileHover={{ y: -6 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 260, damping: 24 }}
                   className="group flex h-full flex-col rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-6 sm:p-8 shadow-[0_20px_60px_-44px_rgba(11,37,64,0.65)] transition-colors hover:border-[var(--brand-gold)] dark:bg-[var(--surface-dark-elevated)]"
                 >

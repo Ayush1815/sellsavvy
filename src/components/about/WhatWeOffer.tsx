@@ -38,7 +38,7 @@ export function WhatWeOffer() {
   return (
     <section id="solutions" className="relative overflow-hidden py-16 sm:py-24 border-b border-[var(--border-soft)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <div>
             <SectionHeader 
               eyebrow="Our Solutions"
@@ -46,7 +46,7 @@ export function WhatWeOffer() {
               text="We offer a wide range of result-driven services designed to help businesses grow and succeed in a competitive market. From digital marketing and brand building to storefront engineering, our solutions are tailored to deliver measurable growth."
               align="left"
             />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 sm:grid-cols-2">
               {offers.map((item, index) => {
                 const Icon = item.Icon;
                 return (

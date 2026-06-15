@@ -239,7 +239,7 @@ export function AuditFormSection() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="shine-button relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--brand-gold)] px-7 py-4 text-sm font-black text-[#071122] shadow-[0_22px_52px_-28px_rgba(207,156,45,0.56)] transition hover:bg-[var(--brand-gold-hover)] disabled:cursor-not-allowed disabled:opacity-70"
+                className="shine-button w-full sm:w-auto relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--brand-gold)] px-7 py-4 text-sm font-black text-[#071122] shadow-[0_22px_52px_-28px_rgba(207,156,45,0.56)] transition hover:bg-[var(--brand-gold-hover)] disabled:cursor-not-allowed disabled:opacity-70 active:scale-[0.98]"
               >
                 <span className="relative z-10">{submitting ? "Sending..." : "Book Free Growth Audit"}</span>
                 <ArrowRight className="relative z-10 h-4 w-4" />

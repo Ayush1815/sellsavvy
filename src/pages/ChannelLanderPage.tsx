@@ -262,7 +262,7 @@ function ServiceDetailPage({ service }: { service: Service }) {
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">{service.detail.intro}</p>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-200">{service.detail.outcome}</p>
-              <div className="mt-8 grid max-w-4xl gap-3 sm:grid-cols-3">
+              <div className="mt-8 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {service.detail.valueProps.map((item) => (
                   <div
                     key={item}
@@ -336,7 +336,7 @@ function ServiceDetailPage({ service }: { service: Service }) {
             </Reveal>
           </div>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {service.detail.modules.map((module, index) => (
               <Reveal key={module.title} delay={Math.min(index * 0.05, 0.18)}>
                 <article className="relative h-full overflow-hidden rounded-[1.35rem] border border-[var(--border-soft)] bg-white/72 p-5 shadow-[0_18px_62px_-50px_rgba(11,37,64,0.66)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-[var(--brand-gold)] dark:bg-white/7">
@@ -369,7 +369,7 @@ function ServiceDetailPage({ service }: { service: Service }) {
             <ServiceSectionMedia image={visual.workflowImage} alt={visual.alt} className="mt-8" compact />
           </Reveal>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {service.detail.workflow.map((step, index) => (
               <Reveal key={step.title} delay={index * 0.06}>
                 <article className="relative h-full overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-white/74 p-6 shadow-[0_20px_70px_-52px_rgba(11,37,64,0.68)] transition hover:-translate-y-1 hover:border-[var(--brand-gold)] dark:bg-white/7">
@@ -449,7 +449,7 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
   return (
     <aside className="relative flex h-full flex-col overflow-hidden rounded-[1.9rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-3 shadow-[0_24px_60px_-24px_rgba(11,37,64,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-[#071017] dark:shadow-[0_36px_100px_-58px_rgba(7,16,23,0.9)]">
       {isWebsiteDevelopment ? (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
           <SplineViewerScene
             sceneUrl={splineHeroScene.sceneUrl}
             fallbackImage={splineHeroScene.fallbackImage}
@@ -464,7 +464,8 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
           </div>
         </figure>
       ) : (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-[var(--surface-light-elevated)] to-transparent dark:from-[#071017] sm:hidden" />
           <img
             src={visual.hero.light}
             alt={visual.hero.alt}
@@ -624,8 +625,8 @@ function ServiceInlinePanel({
   caption: string;
 }) {
   return (
-    <div className="grid grid-cols-[5rem_1fr] gap-4 rounded-[1.35rem] border border-[var(--border-soft)] bg-white/72 p-3 shadow-[0_18px_58px_-48px_rgba(11,37,64,0.66)] backdrop-blur-xl dark:bg-white/7">
-      <img src={image} alt={alt} className="h-20 w-20 rounded-[1rem] object-cover" loading="lazy" />
+    <div className="grid grid-cols-[4rem_1fr] sm:grid-cols-[5rem_1fr] gap-4 rounded-[1.35rem] border border-[var(--border-soft)] bg-white/72 p-3 shadow-[0_18px_58px_-48px_rgba(11,37,64,0.66)] backdrop-blur-xl dark:bg-white/7">
+      <img src={image} alt={alt} className="h-16 w-16 sm:h-20 sm:w-20 rounded-[1rem] object-cover" loading="lazy" />
       <div className="min-w-0 py-1">
         <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]">{kicker}</p>
         <p className="mt-2 text-sm font-bold leading-6 text-slate-700 dark:text-slate-200">{caption}</p>

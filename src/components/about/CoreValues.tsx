@@ -30,12 +30,12 @@ export function CoreValues() {
           align="center"
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-3">
           {values.map((item, index) => {
             const Icon = item.Icon;
             return (
               <Reveal key={item.title} delay={index * 0.1}>
-                <div className="relative h-full flex flex-col items-center text-center rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-8 sm:p-10 shadow-[0_12px_40px_-24px_rgba(11,37,64,0.15)] dark:bg-white/5">
+                <div className="relative h-full flex flex-col items-center text-center rounded-[1.5rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-6 sm:p-10 shadow-[0_12px_40px_-24px_rgba(11,37,64,0.15)] dark:bg-white/5">
                   <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 mb-6">
                     <Icon className="h-7 w-7" />
                   </span>

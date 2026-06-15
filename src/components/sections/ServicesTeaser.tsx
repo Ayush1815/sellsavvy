@@ -18,14 +18,14 @@ export function ServicesTeaser() {
           />
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[var(--brand-gold-muted)] transition hover:gap-3 dark:text-[var(--brand-gold)]"
+            className="inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-bold text-[var(--brand-gold-muted)] transition hover:gap-3 dark:text-[var(--brand-gold)]"
           >
             View all services
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-3">
           {featured.map((service, index) => {
             const Icon = service.Icon;
             return (

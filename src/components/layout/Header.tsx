@@ -7,6 +7,15 @@ import { classNames } from "../../lib/classNames";
 import { BrandMark } from "../brand/BrandMark";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import type { Theme } from "../../types/theme";
+import { navItems } from "../../data/navItems";
+import { classNames } from "../../lib/classNames";
+import { BrandMark } from "../brand/BrandMark";
+import { ThemeToggle } from "../ui/ThemeToggle";
+
 type HeaderProps = {
   theme: Theme;
   onToggleTheme: () => void;
@@ -19,6 +28,15 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add("mobile-scroll-lock");
+    } else {
+      document.body.classList.remove("mobile-scroll-lock");
+    }
+    return () => document.body.classList.remove("mobile-scroll-lock");
+  }, [mobileOpen]);
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-6 lg:px-8">
@@ -57,7 +75,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
           </Link>
         </div>
         <div className="flex items-center gap-2 lg:hidden">
-          <span className="hidden min-[520px]:inline-flex">
+          <span className="inline-flex">
             <ThemeToggle compact theme={theme} onToggle={onToggleTheme} />
           </span>
           <button
@@ -93,37 +111,65 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-x-4 top-[5.5rem] rounded-[1.5rem] border border-[var(--border-soft)] bg-[rgba(248,250,247,0.94)] px-4 py-4 shadow-[0_24px_60px_-34px_rgba(11,37,64,0.55)] backdrop-blur-xl dark:bg-[rgba(7,16,23,0.94)] lg:hidden"
-          >
-            <div className="mx-auto grid max-w-7xl gap-2">
-              <div className="mb-2 flex items-center justify-between rounded-2xl border border-slate-200 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/7">
-                <span className="text-sm font-bold text-slate-700 dark:text-slate-200">Theme</span>
-                <ThemeToggle compact theme={theme} onToggle={onToggleTheme} />
-              </div>
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-white dark:text-slate-200 dark:hover:bg-white/8"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 top-[4.5rem] z-40 bg-black/20 backdrop-blur-sm lg:hidden"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-x-4 top-[5.5rem] z-50 rounded-[1.5rem] border border-[var(--border-soft)] bg-[rgba(248,250,247,0.94)] px-4 py-4 shadow-[0_24px_60px_-34px_rgba(11,37,64,0.55)] backdrop-blur-xl dark:bg-[rgba(7,16,23,0.94)] lg:hidden"
+            >
+              <div className="mx-auto grid max-w-7xl gap-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05, duration: 0.3 }}
+                  className="mb-2 flex items-center justify-between rounded-2xl border border-slate-200 bg-white/70 px-4 py-3 dark:border-white/10 dark:bg-white/7"
                 >
-                  {item.label}
-                </NavLink>
-              ))}
-              <Link
-                to="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 rounded-2xl bg-[var(--brand-gold)] px-4 py-3 text-center text-sm font-black text-[#071122] hover:bg-[var(--brand-gold-hover)]"
-              >
-                Book Free Growth Audit
-              </Link>
-            </div>
-          </motion.div>
+                  <span className="text-sm font-bold text-slate-700 dark:text-slate-200">Theme</span>
+                  <ThemeToggle compact theme={theme} onToggle={onToggleTheme} />
+                </motion.div>
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.path}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + index * 0.04, duration: 0.3 }}
+                  >
+                    <NavLink
+                      to={item.path}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-2xl px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-white dark:text-slate-200 dark:hover:bg-white/8"
+                    >
+                      {item.label}
+                    </NavLink>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + navItems.length * 0.04, duration: 0.3 }}
+                >
+                  <Link
+                    to="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="mt-2 block rounded-2xl bg-[var(--brand-gold)] px-4 py-3 text-center text-sm font-black text-[#071122] hover:bg-[var(--brand-gold-hover)]"
+                  >
+                    Book Free Growth Audit
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

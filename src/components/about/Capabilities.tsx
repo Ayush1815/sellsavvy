@@ -20,7 +20,7 @@ export function Capabilities() {
   return (
     <section className="relative overflow-hidden py-16 sm:py-24 border-b border-[var(--border-soft)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-center">
           {/* Left Column: Text & Tabs */}
           <div className="lg:col-span-7">
             <SectionHeader 
@@ -31,7 +31,7 @@ export function Capabilities() {
             />
             
             <div className="mt-8 relative rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-6 dark:bg-white/5 shadow-sm">
-              <div className="flex space-x-2 rounded-xl bg-slate-200/50 p-1 dark:bg-slate-800/50 mb-6">
+              <div className="flex flex-wrap sm:flex-nowrap gap-2 rounded-xl bg-slate-200/50 p-1 dark:bg-slate-800/50 mb-6">
                 {(["solution", "advantages"] as const).map((tab) => (
                   <button
                     key={tab}

@@ -198,17 +198,17 @@ function CarouselCard({
       aria-label={`Open ${slide.eyebrow}`}
       className="group relative block rounded-[1.55rem] outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)]"
     >
-      <div className="relative aspect-[5/2] overflow-hidden rounded-[1.28rem] border border-slate-950/5 bg-[#f7f9ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/10 dark:bg-[#071017]">
+      <div className="relative aspect-[4/3] sm:aspect-[5/2] overflow-hidden rounded-[1.28rem] border border-slate-950/5 bg-[#f7f9ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/10 dark:bg-[#071017]">
         <ThemedSlideImage
           slide={slide}
           className="service-carousel-image h-full w-full object-cover object-[66%_center] transition-transform duration-500 ease-out group-hover:scale-[1.012]"
         />
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-[76%] bg-[linear-gradient(90deg,rgba(248,250,247,0.99)_0%,rgba(248,250,247,0.98)_34%,rgba(248,250,247,0.72)_51%,rgba(248,250,247,0.14)_76%,transparent_100%)] dark:bg-[linear-gradient(90deg,rgba(7,16,23,0.99)_0%,rgba(7,16,23,0.96)_34%,rgba(7,16,23,0.66)_52%,rgba(7,16,23,0.16)_78%,transparent_100%)] sm:w-[63%] lg:w-[57%]" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-[85%] bg-[linear-gradient(90deg,rgba(248,250,247,0.99)_0%,rgba(248,250,247,0.98)_34%,rgba(248,250,247,0.72)_51%,rgba(248,250,247,0.14)_76%,transparent_100%)] dark:bg-[linear-gradient(90deg,rgba(7,16,23,0.99)_0%,rgba(7,16,23,0.96)_34%,rgba(7,16,23,0.66)_52%,rgba(7,16,23,0.16)_78%,transparent_100%)] sm:w-[63%] lg:w-[57%]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(180deg,transparent,rgba(248,250,247,0.56))] dark:bg-[linear-gradient(180deg,transparent,rgba(7,16,23,0.5))]" />
 
         <div className="absolute inset-y-0 left-0 z-10 flex w-full items-center px-4 py-4 sm:px-6 lg:px-8 xl:px-9">
-          <div className="grid h-full w-full max-w-[19rem] content-center sm:max-w-[24rem] md:max-w-[28rem] lg:max-w-[30rem]">
+          <div className="grid h-full w-full max-w-[19rem] content-center rounded-[1rem] bg-white/30 p-3.5 backdrop-blur-[2px] dark:bg-black/20 sm:max-w-[24rem] sm:rounded-none sm:bg-transparent sm:p-0 sm:backdrop-blur-none dark:sm:bg-transparent md:max-w-[28rem] lg:max-w-[30rem]">
             <p className="inline-flex max-w-full items-center gap-2 justify-self-start rounded-full border border-slate-950/10 bg-white/80 px-2.5 py-1.5 text-[0.56rem] font-black uppercase tracking-[0.15em] text-slate-900 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.72)] backdrop-blur-xl dark:border-white/16 dark:bg-white/8 dark:text-white/90 sm:px-3 sm:text-[0.62rem]">
               <Icon className="h-3.5 w-3.5 text-[var(--slide-accent)]" strokeWidth={2} />
               <span className="truncate">{slide.eyebrow}</span>
@@ -225,17 +225,20 @@ function CarouselCard({
               ))}
             </h3>
 
-            <p className="mt-2 hidden max-w-[28rem] text-[0.72rem] font-semibold leading-5 text-slate-700 dark:text-white/78 sm:block sm:text-[0.78rem] sm:leading-5 md:text-[0.9rem] md:leading-6">
+            <p className="mt-2 line-clamp-2 max-w-[28rem] text-[0.72rem] font-semibold leading-5 text-slate-700 dark:text-white/78 sm:line-clamp-none sm:block sm:text-[0.78rem] sm:leading-5 md:text-[0.9rem] md:leading-6">
               {slide.description}
             </p>
 
-            <div className="mt-3 hidden max-w-[29rem] grid-cols-4 gap-2 md:grid">
-              {slide.features.map((feature) => (
+            <div className="mt-3 grid max-w-[29rem] grid-cols-2 gap-2 md:grid-cols-4">
+              {slide.features.map((feature, idx) => (
                 <span
                   key={feature.label}
-                  className="grid min-h-[3.15rem] place-items-center rounded-[0.68rem] border border-slate-950/10 bg-white/84 px-1.5 py-1.5 text-center text-[0.56rem] font-black uppercase leading-3 tracking-[0.02em] text-slate-800 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.62),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl transition-[transform,border-color] duration-300 group-hover:-translate-y-0.5 group-hover:border-[var(--slide-accent)] dark:border-white/14 dark:bg-white/7 dark:text-white/88 lg:min-h-[3.35rem] lg:text-[0.59rem]"
+                  className={classNames(
+                    "min-h-[2.8rem] place-items-center rounded-[0.68rem] border border-slate-950/10 bg-white/84 px-1.5 py-1.5 text-center text-[0.52rem] font-black uppercase leading-3 tracking-[0.02em] text-slate-800 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.62),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl transition-[transform,border-color] duration-300 group-hover:-translate-y-0.5 group-hover:border-[var(--slide-accent)] dark:border-white/14 dark:bg-white/7 dark:text-white/88 sm:min-h-[3.15rem] sm:text-[0.56rem] lg:min-h-[3.35rem] lg:text-[0.59rem]",
+                    idx >= 2 ? "hidden md:grid" : "grid"
+                  )}
                 >
-                  <feature.Icon className="mb-1 h-4 w-4 text-[var(--slide-accent)]" strokeWidth={2} />
+                  <feature.Icon className="mb-0.5 h-3.5 w-3.5 sm:mb-1 sm:h-4 sm:w-4 text-[var(--slide-accent)]" strokeWidth={2} />
                   {feature.label}
                 </span>
               ))}
@@ -357,7 +360,7 @@ function CarouselButton({ direction, onClick }: { direction: "previous" | "next"
       aria-label={direction === "previous" ? "Show previous service" : "Show next service"}
       className={classNames(
         "absolute top-1/2 z-30 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-slate-950/10 bg-white/78 text-[#0f6dff] shadow-[0_18px_42px_-28px_rgba(0,0,0,0.62)] backdrop-blur-md transition-colors duration-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] dark:border-white/16 dark:bg-white/8 dark:text-[#5d8dff] dark:hover:bg-white/12 sm:h-[3.25rem] sm:w-[3.25rem]",
-        direction === "previous" ? "left-2 sm:left-4 lg:-left-4" : "right-2 sm:right-4 lg:-right-4",
+        direction === "previous" ? "left-3 sm:left-4 lg:-left-4" : "right-3 sm:right-4 lg:-right-4",
       )}
     >
       <Icon className="h-5 w-5" strokeWidth={2.3} />

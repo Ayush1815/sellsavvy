@@ -5,9 +5,9 @@ import { BrandMark } from "../brand/BrandMark";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-950 py-16 text-white">
+    <footer className="bg-slate-950 py-12 sm:py-16 text-white">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-4 md:gap-8 text-sm">
+        <div className="grid gap-10 md:grid-cols-4 md:gap-8 text-sm">
           {/* Column 1 - Brand */}
           <div className="space-y-6">
             <BrandMark variant="footer" />
