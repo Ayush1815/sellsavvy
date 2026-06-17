@@ -10,7 +10,11 @@ export function BrandMark({ animationKey = "static", variant = "header" }: Brand
   return (
     <Link
       to="/"
-      className={`navbar-brand navbar-brand--${variant} flex min-h-12 items-center gap-3`}
+      className={
+        variant === "header"
+          ? "navbar-brand flex min-h-12 items-center gap-3"
+          : "flex items-center gap-3 bg-slate-200 -mx-4 px-4 py-4 sm:mx-0 sm:rounded-xl sm:px-5"
+      }
       aria-label="SellSavvy home"
     >
       <motion.span
