@@ -13,12 +13,12 @@ export function Footer() {
             <div>
               <BrandMark variant="footer" />
             </div>
-            <p className="leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="leading-relaxed text-slate-300">
               Premium ecommerce account management, performance marketing, storefront development, creative support,
               and reporting for brands ready to grow with more discipline.
             </p>
             <div className="pt-2">
-              <p className="mb-4 font-bold text-slate-900 dark:text-white">We're on Social:</p>
+              <p className="mb-4 font-bold text-white">We're on Social:</p>
               <div className="flex flex-wrap gap-3">
                 <a 
                   href={siteConfig.facebook} 
