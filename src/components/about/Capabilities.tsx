@@ -78,8 +78,8 @@ export function Capabilities() {
             <Reveal delay={0.2} className="relative aspect-square w-full max-w-[420px] mx-auto lg:max-w-none">
               <div className="absolute inset-0 bg-gradient-to-tr from-[var(--brand-gold-muted)]/15 to-transparent rounded-[2rem] -z-10 blur-xl" />
               <img 
-                src="/media/about/capabilities.png" 
-                alt="High-end 3D abstract illustration representing e-commerce expertise and interconnected digital services" 
+                src="/media/about/capabilities_workflow.png" 
+                alt="Business workflow diagram on a glass whiteboard showing Discovery, Conversion, and Advocacy" 
                 className="w-full h-full object-cover rounded-[2rem] border border-[var(--border-soft)] shadow-2xl"
               />
             </Reveal>
