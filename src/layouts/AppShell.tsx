@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Theme } from "../types/theme";
 import { getInitialTheme } from "../types/theme";
 import { Footer } from "../components/layout/Footer";

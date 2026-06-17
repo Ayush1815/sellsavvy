@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
 import { ArrowLeft, ArrowRight, Film, MoveRight } from "lucide-react";
 import { serviceCarouselSlides, type ServiceCarouselSlide } from "../../data/serviceCarousel";
 import { classNames } from "../../lib/classNames";

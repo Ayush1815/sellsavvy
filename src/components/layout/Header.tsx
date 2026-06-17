@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
-import type { Theme } from "../../types/theme";
-import { navItems } from "../../data/navItems";
-import { classNames } from "../../lib/classNames";
-import { BrandMark } from "../brand/BrandMark";
-import { ThemeToggle } from "../ui/ThemeToggle";
-
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import type { Theme } from "../../types/theme";
 import { navItems } from "../../data/navItems";
 import { classNames } from "../../lib/classNames";

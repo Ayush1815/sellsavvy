@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Clock, Globe, Mail, Phone } from "lucide-react";
 import { initialAuditForm, type AuditForm } from "../../data/auditForm";
 import { siteConfig } from "../../config/site";

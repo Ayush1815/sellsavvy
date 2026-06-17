@@ -16,8 +16,8 @@ export function BrandMark({ animationKey = "static", variant = "header" }: Brand
       <motion.span
         key={animationKey}
         className="brand-mark-content flex items-center gap-3"
-        initial={{ opacity: 0, y: -7, filter: "blur(3px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, y: -7 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
       >
         <span className="brand-mark-logo-surface flex shrink-0 items-center justify-center">
