@@ -41,41 +41,33 @@ export function ThemeToggle({
       onClick={onToggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={classNames(
-        "group relative inline-flex items-center rounded-full border border-[var(--border-soft)] bg-white/70 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_12px_30px_-18px_rgba(15,23,42,0.65)] backdrop-blur-xl transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-light)] dark:bg-white/8 dark:focus-visible:ring-offset-[var(--surface-dark)]",
-        compact ? "h-10 w-16" : "h-11 w-[5.4rem]",
+        "group relative flex items-center justify-center rounded-full border border-[var(--border-soft)] bg-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.75),0_12px_30px_-18px_rgba(15,23,42,0.65)] backdrop-blur-xl transition hover:scale-[1.04] active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] dark:bg-white/8 text-[var(--brand-navy)] hover:text-[var(--brand-gold-muted)] dark:text-[#d8e1ec] dark:hover:text-[var(--brand-gold)]",
+        compact ? "h-[2.4rem] w-[2.4rem]" : "h-11 w-11"
       )}
     >
-      <span
-        className={classNames(
-          "absolute text-[var(--brand-gold-muted)] transition-opacity group-hover:opacity-100 dark:text-[var(--brand-gold)]",
-          compact ? "left-2" : "left-3",
-        )}
+      <motion.div
+        initial={false}
+        animate={{ rotate: isDark ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0 flex items-center justify-center"
       >
-        <SunGlyph />
-      </span>
-      <span
-        className={classNames(
-          "absolute text-slate-200 transition-opacity group-hover:opacity-100",
-          compact ? "right-2" : "right-3",
-        )}
-      >
-        <MoonGlyph />
-      </span>
-      <motion.span
-        layout
-        transition={{ type: "spring", stiffness: 520, damping: 34 }}
-        className={classNames(
-          "relative z-10 flex items-center justify-center rounded-full shadow-lg",
-          compact ? "h-8 w-8" : "h-9 w-9",
-          isDark
-            ? compact
-              ? "translate-x-6 bg-[#101923] text-[#d8e1ec]"
-              : "translate-x-[2.65rem] bg-[#101923] text-[#d8e1ec]"
-            : "translate-x-0 bg-[var(--brand-gold-soft)] text-[var(--brand-gold-muted)]",
-        )}
-      >
-        {isDark ? <MoonGlyph /> : <SunGlyph />}
-      </motion.span>
+        <motion.div
+          initial={false}
+          animate={{ opacity: isDark ? 0 : 1, rotate: isDark ? -90 : 0, scale: isDark ? 0.3 : 1 }}
+          transition={{ duration: 0.4 }}
+          className="absolute"
+        >
+          <SunGlyph />
+        </motion.div>
+        <motion.div
+          initial={false}
+          animate={{ opacity: isDark ? 1 : 0, rotate: isDark ? 0 : 90, scale: isDark ? 1 : 0.3 }}
+          transition={{ duration: 0.4 }}
+          className="absolute"
+        >
+          <MoonGlyph />
+        </motion.div>
+      </motion.div>
     </button>
   );
 }

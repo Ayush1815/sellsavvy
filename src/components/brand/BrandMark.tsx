@@ -31,10 +31,10 @@ export function BrandMark({ animationKey = "static", variant = "header" }: Brand
           />
         </span>
         <span className="leading-none pt-1">
-          <span className="block text-[1.4rem] font-extrabold tracking-tight text-[var(--brand-navy)] dark:text-white">
+          <span className="block text-[1.4rem] font-extrabold tracking-tight text-[var(--brand-navy)]">
             SellSavvy
           </span>
-          <span className="block mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-slate-300 max-[430px]:hidden">
+          <span className="block mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-slate-500 max-[430px]:hidden">
             Smart solution for smart sellers
           </span>
         </span>
