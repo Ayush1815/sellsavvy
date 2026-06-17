@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Reveal, SectionHeader } from "../ui/Reveal";
 import { classNames } from "../../lib/classNames";
 
@@ -30,8 +30,9 @@ export function Capabilities() {
               align="left"
             />
             
-            <div className="mt-8 relative rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-6 dark:bg-white/5 shadow-sm">
-              <div className="flex flex-wrap sm:flex-nowrap gap-2 rounded-xl bg-slate-200/50 p-1 dark:bg-slate-800/50 mb-6">
+            <Reveal delay={0.1}>
+              <div className="mt-8 relative rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-6 dark:bg-white/5 shadow-sm">
+                <div className="flex flex-wrap sm:flex-nowrap gap-2 rounded-xl bg-slate-200/50 p-1 dark:bg-slate-800/50 mb-6">
                 {(["solution", "advantages"] as const).map((tab) => (
                   <button
                     key={tab}
@@ -69,8 +70,9 @@ export function Capabilities() {
                     </p>
                   </motion.div>
                 </AnimatePresence>
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right Column: Image Visual */}
