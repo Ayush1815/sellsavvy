@@ -173,14 +173,6 @@
   backdrop-filter: blur(24px) saturate(1.5);
 }
 
-.navbar-brand--footer,
-.dark .navbar-brand--footer {
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
-
 .dark .nav-link-pill {
   border-color: rgba(228, 189, 96, 0.18);
   background:

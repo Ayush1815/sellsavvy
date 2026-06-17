@@ -9,14 +9,16 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-4 md:gap-8 text-sm">
           {/* Column 1 - Brand */}
-          <div className="flex flex-col space-y-6 rounded-[2rem] bg-white p-7 shadow-2xl sm:p-8">
-            <BrandMark variant="footer" />
-            <p className="leading-relaxed text-slate-900">
+          <div className="flex flex-col space-y-6">
+            <div>
+              <BrandMark variant="footer" />
+            </div>
+            <p className="leading-relaxed text-slate-600 dark:text-slate-300">
               Premium ecommerce account management, performance marketing, storefront development, creative support,
               and reporting for brands ready to grow with more discipline.
             </p>
             <div className="pt-2">
-              <p className="mb-4 font-bold text-slate-900">We're on Social:</p>
+              <p className="mb-4 font-bold text-slate-900 dark:text-white">We're on Social:</p>
               <div className="flex flex-wrap gap-3">
                 <a 
                   href={siteConfig.facebook} 
