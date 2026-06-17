@@ -9,20 +9,21 @@ export function Footer() {
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-4 md:gap-8 text-sm">
           {/* Column 1 - Brand */}
-          <div className="space-y-6">
+          <div className="flex flex-col space-y-6 rounded-[2rem] bg-white p-7 shadow-2xl dark:bg-white/5 dark:shadow-none dark:ring-1 dark:ring-white/10 sm:p-8">
             <BrandMark variant="footer" />
-            <p className="max-w-[280px] leading-7 text-slate-300">
+            <p className="leading-relaxed text-slate-600 dark:text-slate-300">
               Premium ecommerce account management, performance marketing, storefront development, creative support,
               and reporting for brands ready to grow with more discipline.
             </p>
-            <div>
-              <p className="mb-4 font-bold text-white">We're on Social:</p>
-              <div className="flex gap-3">
+            <div className="pt-2">
+              <p className="mb-4 font-bold text-slate-900 dark:text-white">We're on Social:</p>
+              <div className="flex flex-wrap gap-3">
                 <a 
                   href={siteConfig.facebook} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1877F2] text-white transition-transform hover:-translate-y-1"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-md transition-transform hover:-translate-y-1"
+                  aria-label="Facebook"
                 >
                   <Facebook className="h-5 w-5" fill="currentColor" />
                 </a>
@@ -30,13 +31,14 @@ export function Footer() {
                   href={siteConfig.instagram} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white transition-transform hover:-translate-y-1"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-md transition-transform hover:-translate-y-1"
+                  aria-label="Instagram"
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
                 <a 
                   href="mailto:sellsavvyservices@gmail.com"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EA4335] text-white transition-transform hover:-translate-y-1"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EA4335] text-white shadow-md transition-transform hover:-translate-y-1"
                   aria-label="Email Us"
                 >
                   <Mail className="h-5 w-5" />
