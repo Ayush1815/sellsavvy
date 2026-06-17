@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import type { Theme } from "../types/theme";
 import { getInitialTheme } from "../types/theme";
 import { Footer } from "../components/layout/Footer";
@@ -49,17 +49,14 @@ export function AppShell() {
       <Header theme={theme} onToggleTheme={() => setTheme(theme === "dark" ? "light" : "dark")} />
       <div className={splashDone ? undefined : "invisible"}>
         <main id="main" tabIndex={-1} className="outline-none">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={location.pathname}
-              initial={reducedMotion ? false : { opacity: 0, y: 12, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={reducedMotion ? undefined : { opacity: 0, y: -10, filter: "blur(6px)" }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Outlet />
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            key={location.pathname}
+            initial={reducedMotion ? false : { opacity: 0, y: 12, filter: "blur(6px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Outlet />
+          </motion.div>
         </main>
         <Footer />
         <WhatsAppFab />

@@ -56,10 +56,10 @@ export function Footer() {
             </h3>
             <div className="flex flex-col space-y-3 text-slate-300">
               <Link to="/" className="w-fit transition hover:text-[var(--brand-gold)]">Home</Link>
-              <Link to="/about" className="w-fit transition hover:text-[var(--brand-gold)]">About Us</Link>
               <Link to="/services" className="w-fit transition hover:text-[var(--brand-gold)]">Services</Link>
-              <Link to="/faq" className="w-fit transition hover:text-[var(--brand-gold)]">FAQ</Link>
               <Link to="/contact" className="w-fit transition hover:text-[var(--brand-gold)]">Contact Us</Link>
+              <Link to="/about" className="w-fit transition hover:text-[var(--brand-gold)]">About Us</Link>
+              <Link to="/faq" className="w-fit transition hover:text-[var(--brand-gold)]">FAQ</Link>
               <Link to="/terms" className="w-fit transition hover:text-[var(--brand-gold)]">Terms & Conditions</Link>
             </div>
           </div>
