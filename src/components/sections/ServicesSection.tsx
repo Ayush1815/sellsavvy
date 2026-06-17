@@ -51,10 +51,7 @@ export function ServicesSection() {
                   <div className="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-white/5 border border-[var(--border-soft)] aspect-video w-full">
                     <img src={service.image} alt={service.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
-                  <div className="flex items-start justify-between gap-5">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--brand-gold-soft)] text-[var(--brand-gold-muted)] transition-colors group-hover:bg-[var(--brand-gold)] group-hover:text-[#071122] dark:text-[var(--brand-gold)]">
-                      <Icon className="h-5 w-5" />
-                    </span>
+                  <div className="flex items-start justify-end gap-5">
                     <Link
                       to={`/services/${service.slug}`}
                       className="rounded-full border border-[var(--border-soft)] px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-[var(--brand-gold)] hover:text-[var(--brand-gold-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)] dark:text-slate-300 dark:hover:text-[var(--brand-gold)] shrink-0"
