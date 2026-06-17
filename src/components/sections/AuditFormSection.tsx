@@ -97,7 +97,7 @@ export function AuditFormSection() {
             </span>
             <span className="flex items-center gap-2">
               <Globe className="h-4 w-4 shrink-0 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" />
-              Remote ecommerce support
+              sellsavvy.in
             </span>
             <span className="flex items-center gap-2 rounded-2xl border border-emerald-500/20 bg-emerald-50/80 px-3 py-2 text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-200">
               <Clock className="h-4 w-4 shrink-0" />
