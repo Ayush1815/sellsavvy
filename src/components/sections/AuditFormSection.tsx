@@ -9,6 +9,7 @@ import { AuditSubmitError, submitAudit } from "../../lib/submitAudit";
 import { Reveal, SectionHeader } from "../ui/Reveal";
 import { ButtonLink } from "../ui/ButtonLink";
 import { CustomSelect } from "../ui/CustomSelect";
+import { MultiSelect } from "../ui/MultiSelect";
 
 export function AuditFormSection() {
   const [form, setForm] = useState<AuditForm>(initialAuditForm);
@@ -24,7 +25,7 @@ export function AuditFormSection() {
     trackEvent("form_start", { form: "audit" });
   };
 
-  const updateField = (field: keyof AuditForm, value: string) => {
+  const updateField = <K extends keyof AuditForm>(field: K, value: AuditForm[K]) => {
     markStarted();
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
@@ -56,7 +57,7 @@ export function AuditFormSection() {
         source: window.location.pathname,
       });
       setSubmitted(true);
-      trackEvent("form_submit", { form: "audit", platform: form.platform });
+      trackEvent("form_submit", { form: "audit", platform: form.platform.join(", ") });
       setForm(initialAuditForm);
       startedRef.current = false;
     } catch (error) {
@@ -186,21 +187,44 @@ export function AuditFormSection() {
                 />
               </label>
 
-              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
-                Main platform
-                <CustomSelect
-                  value={form.platform}
-                  onChange={(value) => updateField("platform", value)}
-                  options={[
-                    "Amazon / Flipkart",
-                    "Shopify / D2C website",
-                    "WooCommerce",
-                    "Meesho",
-                    "Multiple channels"
-                  ]}
-                  className={fieldBase}
-                />
-              </label>
+              <div className="flex flex-col gap-4">
+                <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
+                  Main platforms
+                  <MultiSelect
+                    value={form.platform}
+                    onChange={(value) => updateField("platform", value)}
+                    options={[
+                      "Amazon",
+                      "Flipkart",
+                      "Meesho",
+                      "Myntra",
+                      "Ajio",
+                      "Others"
+                    ]}
+                    className={fieldBase}
+                  />
+                </label>
+                <AnimatePresence>
+                  {form.platform.includes("Others") && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
+                        Please specify
+                        <input
+                          value={form.otherPlatform}
+                          onChange={(event) => updateField("otherPlatform", event.target.value)}
+                          className={classNames(fieldBase, "mt-2")}
+                          placeholder="e.g. Nykaa, Blinkit"
+                        />
+                      </label>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
                 Monthly revenue
