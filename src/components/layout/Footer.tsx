@@ -11,7 +11,7 @@ export function Footer() {
           {/* Column 1 - Brand */}
           <div className="flex flex-col space-y-6 rounded-[2rem] bg-white p-7 shadow-2xl sm:p-8">
             <BrandMark variant="footer" />
-            <p className="leading-relaxed text-slate-600">
+            <p className="leading-relaxed text-slate-900">
               Premium ecommerce account management, performance marketing, storefront development, creative support,
               and reporting for brands ready to grow with more discipline.
             </p>

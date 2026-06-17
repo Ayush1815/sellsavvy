@@ -19,7 +19,7 @@ function SunGlyph() {
 function MoonGlyph() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4">
-      <path d="M20.2 14.4A7.5 7.5 0 0 1 9.6 3.8a8.8 8.8 0 1 0 10.6 10.6Z" fill="currentColor" />
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" />
     </svg>
   );
 }
