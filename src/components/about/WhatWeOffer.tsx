@@ -66,8 +66,8 @@ export function WhatWeOffer() {
           <Reveal delay={0.2} className="relative aspect-square max-w-[500px] mx-auto w-full lg:max-w-none">
             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--brand-gold-muted)]/20 to-transparent rounded-[2rem] -z-10 blur-xl" />
             <img 
-              src="/media/about/solutions.png" 
-              alt="Analytics and E-commerce growth dashboard visualization" 
+              src="/media/about/ecommerce_isometric_system.png" 
+              alt="Premium 3D isometric illustration of an e-commerce digital marketing system with glowing interconnected nodes" 
               className="w-full h-full object-cover rounded-[2rem] border border-[var(--border-soft)] shadow-2xl"
             />
           </Reveal>
