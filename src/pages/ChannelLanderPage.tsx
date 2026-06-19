@@ -55,8 +55,8 @@ const serviceVisuals: Record<string, ServiceVisual> = {
     },
     deliverablesImage: "/media/services/E-commerce_management_2.webp",
     architectureImage: "/media/services/E-commerce_management_3.webp",
-    workflowImage: "/media/services/Ecommerce_workflow_custom.png",
-    controlPointsImage: "/media/services/Ecommerce_controlpoints_custom.png",
+    workflowImage: "/media/services/Ecommerce_workflow_custom.webp",
+    controlPointsImage: "/media/services/Ecommerce_controlpoints_custom.webp",
     alt: "E-commerce account dashboard showing total sales and orders",
     kicker: "Marketplace control room",
     title: "Accounts, catalog, orders, and promotions in one operating view.",
@@ -93,9 +93,9 @@ const serviceVisuals: Record<string, ServiceVisual> = {
       dark: "/media/services/Photoshoot_1.webp",
       alt: "Custom product photoshoot hero with camera, studio lights, perfume bottle, styling props, and campaign reference cards",
     },
-    deliverablesImage: "/media/services/Photoshoot_architecture_custom.png",
-    architectureImage: "/media/services/Photoshoot_deliverables_custom.png",
-    workflowImage: "/media/services/Photoshoot_workflow_custom.png",
+    deliverablesImage: "/media/services/Photoshoot_architecture_custom.webp",
+    architectureImage: "/media/services/Photoshoot_deliverables_custom.webp",
+    workflowImage: "/media/services/Photoshoot_workflow_custom.webp",
     controlPointsImage: "/media/services/carousel/ecommerce-photoshoot-new.webp",
     alt: "Product photography studio setup and styling",
     kicker: "Product visual studio",
@@ -115,8 +115,8 @@ const serviceVisuals: Record<string, ServiceVisual> = {
     },
     deliverablesImage: "/media/services/Website_design_5.webp",
     architectureImage: "/media/services/Website_design_2.webp",
-    workflowImage: "/media/services/Website_workflow_custom.png",
-    controlPointsImage: "/media/services/Website_controlpoints_custom.png",
+    workflowImage: "/media/services/Website_workflow_custom.webp",
+    controlPointsImage: "/media/services/Website_controlpoints_custom.webp",
     alt: "Custom website wireframes and performance metrics",
     kicker: "Website experience",
     title: "Responsive pages shaped around clarity, trust, speed, and conversion.",
@@ -458,7 +458,7 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
             eager
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0)_60%,rgba(255,255,255,0.6))] dark:bg-[linear-gradient(180deg,transparent,rgba(7,16,23,0)_60%,rgba(7,16,23,0.2))]" />
-          <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
+          <div className="hidden sm:inline-flex absolute left-4 top-4 items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
             <Icon className="h-4 w-4 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" strokeWidth={1.8} />
             3D website route
           </div>
@@ -479,7 +479,7 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
             className="absolute inset-0 hidden h-full w-full object-contain sm:object-cover object-center transition duration-700 hover:scale-[1.015] dark:block"
             loading="eager"
           />
-          <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-slate-200/60 bg-white/72 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
+          <div className="hidden sm:inline-flex absolute left-4 top-4 items-center gap-2 rounded-full border border-slate-200/60 bg-white/72 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
             <Icon className="h-4 w-4 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" strokeWidth={1.8} />
             Custom service visual
           </div>

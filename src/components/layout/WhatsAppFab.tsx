@@ -16,10 +16,10 @@ export function WhatsAppFab() {
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
         onClick={() => trackEvent("cta_click", { label: "whatsapp_fab" })}
-        className="flex h-12 w-12 items-center justify-center rounded-full transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 shadow-[0_18px_50px_-20px_rgba(37,211,102,0.85)]"
+        className="flex h-[41px] w-[41px] items-center justify-center rounded-full transition hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 shadow-[0_18px_50px_-20px_rgba(37,211,102,0.85)]"
       >
         <img
-          src="/media/whatsapp.png"
+          src="/media/whatsapp.webp"
           alt="WhatsApp"
           loading="lazy"
           className="h-full w-full object-contain"

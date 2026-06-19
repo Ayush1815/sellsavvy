@@ -588,7 +588,7 @@ export const SignInPage = ({ className, onSuccess }: SignInPageProps) => {
                       <div className="relative">
                         <input 
                           type="email" 
-                          placeholder="merchant@sellsavvy.ai"
+                          placeholder="sellsavvyservices@gmail.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           className="w-full text-xs backdrop-blur-md bg-[#020108]/60 text-white border border-white/10 rounded-full py-3 px-5 focus:outline-none focus:border-purple-500/40 text-center font-mono placeholder-white/20"

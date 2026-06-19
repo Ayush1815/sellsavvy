@@ -53,7 +53,8 @@ export function HeroVisual() {
     videoRef.current.playbackRate = 1.15;
   }, [reducedMotion, theme]);
 
-  const source = theme === "dark" ? "/media/Dark.mp4" : "/media/lllll.mp4";
+  const source = theme === "dark" ? "/media/Dark.webm" : "/media/lllll.webm";
+  const posterSource = theme === "dark" ? "/media/dark_poster.webp" : "/media/light_poster.webp";
 
   useEffect(() => {
     setReady(false);
@@ -73,6 +74,7 @@ export function HeroVisual() {
               key={source}
               ref={videoRef}
               src={source}
+              poster={posterSource}
               className={`hero-video pointer-events-none transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
               autoPlay
               muted

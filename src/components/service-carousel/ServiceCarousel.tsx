@@ -198,23 +198,25 @@ function CarouselCard({
       aria-label={`Open ${slide.eyebrow}`}
       className="group relative block rounded-[1.55rem] outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-gold)]"
     >
-      <div className="relative min-h-[26rem] overflow-hidden rounded-[1.28rem] border border-slate-950/5 bg-[#f7f9ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/10 dark:bg-[#071017] sm:aspect-[5/2] sm:min-h-0">
+      <div className="relative min-h-[32rem] overflow-hidden rounded-[1.4rem] border border-slate-950/5 bg-[#f7f9ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/10 dark:bg-[#071017] sm:min-h-[28rem] sm:rounded-[1.28rem] md:min-h-[30rem] lg:min-h-0 lg:aspect-[5/2]">
         <ThemedSlideImage
           slide={slide}
-          className="service-carousel-image absolute inset-0 h-full w-full object-cover object-right transition-transform duration-500 ease-out group-hover:scale-[1.012] sm:static sm:object-[66%_center]"
+          className="service-carousel-image absolute inset-0 h-full w-full object-cover object-[center_top] transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:object-[66%_center]"
         />
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-[85%] bg-[linear-gradient(90deg,rgba(248,250,247,0.99)_0%,rgba(248,250,247,0.98)_34%,rgba(248,250,247,0.72)_51%,rgba(248,250,247,0.14)_76%,transparent_100%)] dark:bg-[linear-gradient(90deg,rgba(7,16,23,0.99)_0%,rgba(7,16,23,0.96)_34%,rgba(7,16,23,0.66)_52%,rgba(7,16,23,0.16)_78%,transparent_100%)] sm:w-[63%] lg:w-[57%]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(180deg,transparent,rgba(248,250,247,0.56))] dark:bg-[linear-gradient(180deg,transparent,rgba(7,16,23,0.5))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(247,249,255,0.1)_25%,rgba(247,249,255,0.95)_55%,rgba(247,249,255,1)_100%)] dark:bg-[linear-gradient(180deg,transparent_0%,rgba(7,16,23,0.1)_25%,rgba(7,16,23,0.95)_55%,rgba(7,16,23,1)_100%)] sm:hidden" />
+        
+        <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-[75%] bg-[linear-gradient(90deg,rgba(248,250,247,1)_0%,rgba(248,250,247,0.96)_40%,rgba(248,250,247,0.6)_65%,rgba(248,250,247,0.1)_85%,transparent_100%)] dark:bg-[linear-gradient(90deg,rgba(7,16,23,1)_0%,rgba(7,16,23,0.96)_40%,rgba(7,16,23,0.6)_65%,rgba(7,16,23,0.1)_85%,transparent_100%)] sm:block lg:w-[65%]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-24 bg-[linear-gradient(180deg,transparent,rgba(248,250,247,0.7))] dark:bg-[linear-gradient(180deg,transparent,rgba(7,16,23,0.7))] sm:block" />
 
-        <div className="absolute inset-y-0 left-0 z-10 flex w-full items-center px-4 py-4 sm:px-6 lg:px-8 xl:px-9">
-          <div className="grid h-full w-full max-w-[19rem] content-center rounded-[1rem] bg-white/30 p-3.5 backdrop-blur-[2px] dark:bg-black/20 sm:max-w-[24rem] sm:rounded-none sm:bg-transparent sm:p-0 sm:backdrop-blur-none dark:sm:bg-transparent md:max-w-[28rem] lg:max-w-[30rem]">
-            <p className="inline-flex max-w-full items-center gap-2 justify-self-start rounded-full border border-slate-950/10 bg-white/80 px-2.5 py-1.5 text-[0.56rem] font-black uppercase tracking-[0.15em] text-slate-900 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.72)] backdrop-blur-xl dark:border-white/16 dark:bg-white/8 dark:text-white/90 sm:px-3 sm:text-[0.62rem]">
+        <div className="absolute inset-0 z-10 flex w-full flex-col justify-end p-5 pb-14 sm:justify-center sm:p-8 sm:pb-12 md:p-10 md:pb-14 lg:p-12 lg:pb-16">
+          <div className="grid w-full gap-2.5 sm:max-w-[26rem] sm:gap-2 md:max-w-[30rem] lg:max-w-[34rem]">
+            <p className="inline-flex max-w-max items-center gap-2 rounded-full border border-slate-950/10 bg-white/90 px-3 py-1.5 text-[0.6rem] font-black uppercase tracking-[0.15em] text-slate-900 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.72)] backdrop-blur-xl dark:border-white/16 dark:bg-[#0f1722]/90 dark:text-white/90 sm:px-3 sm:text-[0.62rem]">
               <Icon className="h-3.5 w-3.5 text-[var(--slide-accent)]" strokeWidth={2} />
               <span className="truncate">{slide.eyebrow}</span>
             </p>
 
-            <h3 className="mt-2 text-balance text-[1.42rem] font-black uppercase leading-[0.94] tracking-normal text-slate-950 dark:text-white min-[430px]:text-[1.66rem] sm:text-[2.05rem] md:text-[2.38rem] lg:text-[2.54rem] xl:text-[2.72rem]">
+            <h3 className="text-balance text-[1.6rem] font-black uppercase leading-[0.98] tracking-tight text-slate-950 dark:text-white min-[430px]:text-[1.8rem] sm:text-[1.9rem] md:text-[2.2rem] lg:text-[2.6rem] xl:text-[2.8rem]">
               {slide.headline.map((part, index) => (
                 <span key={`${slide.id}-${index}`} className="block">
                   {part.text}
@@ -225,34 +227,34 @@ function CarouselCard({
               ))}
             </h3>
 
-            <p className="mt-2 line-clamp-2 max-w-[28rem] text-[0.72rem] font-semibold leading-5 text-slate-700 dark:text-white/78 sm:line-clamp-none sm:block sm:text-[0.78rem] sm:leading-5 md:text-[0.9rem] md:leading-6">
+            <p className="max-w-[28rem] text-[0.8rem] font-medium leading-[1.4] text-slate-700 dark:text-slate-300 sm:text-[0.8rem] sm:font-semibold sm:leading-[1.4] md:text-[0.9rem] md:leading-6 lg:max-w-[30rem]">
               {slide.description}
             </p>
 
-            <div className="mt-3 grid max-w-[29rem] grid-cols-2 gap-2 md:grid-cols-4">
+            <div className="mt-1 grid w-full grid-cols-2 gap-2 sm:mt-1.5 sm:max-w-[29rem] md:mt-2 md:grid-cols-4 lg:mt-3">
               {slide.features.map((feature, idx) => (
                 <span
                   key={feature.label}
                   className={classNames(
-                    "min-h-[2.8rem] place-items-center rounded-[0.68rem] border border-slate-950/10 bg-white/84 px-1.5 py-1.5 text-center text-[0.52rem] font-black uppercase leading-3 tracking-[0.02em] text-slate-800 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.62),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl transition-[transform,border-color] duration-300 group-hover:-translate-y-0.5 group-hover:border-[var(--slide-accent)] dark:border-white/14 dark:bg-white/7 dark:text-white/88 sm:min-h-[3.15rem] sm:text-[0.56rem] lg:min-h-[3.35rem] lg:text-[0.59rem]",
-                    idx >= 2 ? "hidden md:grid" : "grid"
+                    "flex min-h-[2.8rem] items-center justify-center gap-1.5 rounded-[0.68rem] border border-slate-950/10 bg-white/90 px-2 py-1.5 text-center text-[0.55rem] font-black uppercase leading-3 tracking-[0.02em] text-slate-800 shadow-[0_14px_40px_-34px_rgba(11,37,64,0.62),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-xl transition-[transform,border-color] duration-300 group-hover:-translate-y-0.5 group-hover:border-[var(--slide-accent)] dark:border-white/10 dark:bg-[#0f1722]/80 dark:text-slate-200 sm:min-h-[3.15rem] sm:flex-col sm:text-[0.56rem] lg:min-h-[3.35rem] lg:text-[0.59rem]",
+                    idx >= 2 ? "hidden md:flex" : "flex"
                   )}
                 >
-                  <feature.Icon className="mb-0.5 h-3.5 w-3.5 sm:mb-1 sm:h-4 sm:w-4 text-[var(--slide-accent)]" strokeWidth={2} />
-                  {feature.label}
+                  <feature.Icon className="h-3.5 w-3.5 shrink-0 text-[var(--slide-accent)] sm:mb-1 sm:h-4 sm:w-4" strokeWidth={2} />
+                  <span>{feature.label}</span>
                 </span>
               ))}
             </div>
 
-            <div className="mt-2.5 flex items-center gap-2.5 sm:mt-3 md:mt-3.5 md:gap-3">
-              <span className="inline-flex min-h-9 w-auto min-w-[9.75rem] items-center justify-between gap-3 rounded-[0.7rem] bg-[#0f6dff] px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.02em] text-white shadow-[0_18px_48px_-25px_rgba(15,109,255,0.82),inset_0_1px_0_rgba(255,255,255,0.28)] transition-[transform,background-color] duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#075be0] dark:shadow-[0_0_32px_-16px_rgba(15,109,255,0.9),inset_0_1px_0_rgba(255,255,255,0.22)] sm:min-h-10 sm:min-w-[12.25rem] sm:text-[0.78rem] md:min-w-[13.5rem]">
+            <div className="mt-2 flex flex-wrap items-center gap-3 sm:mt-2 md:mt-3 lg:gap-4">
+              <span className="inline-flex min-h-11 w-full items-center justify-center gap-3 rounded-[0.7rem] bg-[#0f6dff] px-4 py-2 text-[0.75rem] font-black uppercase tracking-[0.02em] text-white shadow-[0_18px_48px_-25px_rgba(15,109,255,0.82),inset_0_1px_0_rgba(255,255,255,0.28)] transition-[transform,background-color] duration-300 group-hover:-translate-y-0.5 group-hover:bg-[#075be0] dark:shadow-[0_0_32px_-16px_rgba(15,109,255,0.9),inset_0_1px_0_rgba(255,255,255,0.22)] sm:w-auto sm:min-h-10 sm:min-w-[12rem] sm:text-[0.75rem] md:min-h-11 md:min-w-[13.5rem] md:text-[0.8rem]">
                 {slide.cta}
-                <MoveRight className="h-4 w-4" strokeWidth={2.2} />
+                <MoveRight className="h-4 w-4 shrink-0" strokeWidth={2.2} />
               </span>
-              <div className="hidden min-w-0 items-center gap-2 md:flex">
+              <div className="hidden min-w-0 items-center gap-2 sm:flex">
                 <AvatarStack />
-                <p className="min-w-0 max-w-[12rem] text-[0.72rem] font-semibold leading-4 text-slate-700 dark:text-white/74 lg:text-[0.76rem]">
-                  <span className="font-black text-slate-950 dark:text-white">{slide.proof.value}</span> {slide.proof.text}
+                <p className="min-w-0 max-w-[12rem] text-[0.7rem] font-semibold leading-tight text-slate-700 dark:text-white/74 lg:text-[0.76rem]">
+                  <span className="block font-black text-slate-950 dark:text-white">{slide.proof.value}</span> {slide.proof.text}
                 </p>
               </div>
             </div>

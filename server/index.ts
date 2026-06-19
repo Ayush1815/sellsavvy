@@ -125,19 +125,65 @@ async function sendLeadEmail(lead: Lead): Promise<void> {
   try {
     const { Resend } = await import("resend");
     const resend = new Resend(RESEND_API_KEY);
-    const { error } = await resend.emails.send({
+    
+    // 1. Send internal notification
+    const internalEmail = resend.emails.send({
       from: "SellSavvy Leads <onboarding@resend.dev>",
       to: [CONTACT_EMAIL],
       subject: `New audit request — ${lead.name} (${lead.business})`,
       html,
     });
-    if (error) {
-      console.error("[email] Resend error:", error);
-    } else {
-      console.log(`[email] Notification sent to ${CONTACT_EMAIL}`);
-    }
+
+    // 2. Send autoresponder to the lead
+    const autoresponderHtml = `
+<!DOCTYPE html>
+<html>
+<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#334155;margin:0;padding:0;background-color:#f8fafc">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 10px 25px -5px rgba(0,0,0,0.05)">
+        <tr>
+          <td style="background-color:#0f172a;padding:40px 32px;text-align:center">
+            <h1 style="margin:0;font-size:24px;color:#ffffff;font-weight:800;letter-spacing:-0.02em">Sell<span style="color:#eab308">Savvy</span></h1>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:40px 32px">
+            <p style="font-size:16px;color:#0f172a;font-weight:600">Hi ${lead.name},</p>
+            <p style="font-size:15px;color:#475569">We've successfully received your audit request for <strong>${lead.business}</strong>.</p>
+            <p style="font-size:15px;color:#475569">Our team is currently reviewing your channels and revenue details. We will prepare your focused audit summary and reach out to you shortly to schedule a walkthrough.</p>
+            ${process.env.VITE_CALENDLY_URL ? `
+            <div style="margin:32px 0;text-align:center">
+              <p style="font-size:14px;color:#64748b;margin-bottom:12px">Ready to lock in a time to chat right now?</p>
+              <a href="${process.env.VITE_CALENDLY_URL}" style="display:inline-block;background-color:#eab308;color:#0f172a;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px">Pick a time on our calendar</a>
+            </div>` : ''}
+            <p style="font-size:15px;color:#475569;margin-top:32px">Best regards,<br><strong style="color:#0f172a">The SellSavvy Team</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
+    const autoresponderEmail = resend.emails.send({
+      // IMPORTANT: Needs custom domain verified in Resend to send to arbitrary emails
+      from: "SellSavvy <onboarding@resend.dev>", 
+      to: [lead.email],
+      subject: `Your SellSavvy Audit Request is Confirmed!`,
+      html: autoresponderHtml,
+    });
+
+    const [internalRes, autoresponderRes] = await Promise.all([internalEmail, autoresponderEmail]);
+
+    if (internalRes.error) console.error("[email] Internal notification Resend error:", internalRes.error);
+    else console.log(`[email] Internal notification sent to ${CONTACT_EMAIL}`);
+
+    if (autoresponderRes.error) console.error("[email] Autoresponder Resend error:", autoresponderRes.error);
+    else console.log(`[email] Autoresponder sent to ${lead.email}`);
+
   } catch (err) {
-    console.error("[email] Failed to send:", err);
+    console.error("[email] Failed to send emails:", err);
   }
 }
 

@@ -31,20 +31,24 @@ export function AppSplash({ onDone }: { onDone: () => void }) {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--surface-light)] dark:bg-[#03080d]"
       initial={{ opacity: 1 }}
       animate={{ opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.45 }}
       aria-hidden="true"
     >
-      <div className="loader-brand-card flex flex-col items-center gap-5 text-center">
+      <motion.div 
+        className="loader-brand-card flex flex-col items-center gap-5 text-center"
+        animate={{ scale: visible ? 1 : 0.85, opacity: visible ? 1 : 0 }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      >
         <motion.img
           src="/brand/sellsavvy-mark-transparent.webp"
           alt="SellSavvy Logo"
           width={160}
           height={128}
           decoding="async"
-          className="loader-logo"
-          initial={reducedMotion ? false : { scale: 0.88, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          className="loader-logo drop-shadow-xl"
+          initial={reducedMotion ? false : { scale: 0.6, opacity: 0 }}
+          animate={{ scale: visible ? [0.6, 1.15, 0.95, 1] : 0.9, opacity: visible ? 1 : 0 }}
+          transition={{ duration: 0.85, ease: "easeOut", times: [0, 0.4, 0.7, 1] }}
         />
         <div>
           <p className="text-xl font-black tracking-tight text-[var(--brand-navy)]">
@@ -62,7 +66,7 @@ export function AppSplash({ onDone }: { onDone: () => void }) {
             transition={{ duration: 1.35, ease: [0.16, 1, 0.3, 1] }}
           />
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
