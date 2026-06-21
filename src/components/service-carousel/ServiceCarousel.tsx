@@ -143,7 +143,7 @@ export function ServiceCarousel({
               exit={reducedMotion ? undefined : "exit"}
               transition={slideMotion}
               style={{ willChange: "transform, opacity" }}
-              className="relative z-20 mx-auto max-w-full cursor-grab rounded-[1.65rem] border border-white/60 bg-white/52 p-1.5 shadow-[0_34px_100px_-62px_rgba(11,37,64,0.82),inset_0_1px_0_rgba(255,255,255,0.82)] backdrop-blur-2xl active:cursor-grabbing dark:border-white/12 dark:bg-white/[0.055] dark:shadow-[0_42px_110px_-64px_rgba(0,0,0,0.92),inset_0_1px_0_rgba(255,255,255,0.12)] sm:p-2"
+              className="relative z-20 mx-auto max-w-full cursor-grab rounded-[1.55rem] shadow-[0_34px_100px_-62px_rgba(11,37,64,0.82)] active:cursor-grabbing dark:shadow-[0_42px_110px_-64px_rgba(0,0,0,0.92)]"
             >
               <CarouselCard slide={activeSlide} activeIndex={activeIndex} onIndicatorClick={goToSlide} />
             </motion.div>

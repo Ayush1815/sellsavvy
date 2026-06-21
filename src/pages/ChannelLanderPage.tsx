@@ -447,9 +447,9 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
   const isWebsiteDevelopment = service.slug === "website-design";
 
   return (
-    <aside className="relative flex h-full flex-col overflow-hidden rounded-[1.9rem] border border-[var(--border-soft)] bg-[var(--surface-light-elevated)] p-3 shadow-[0_24px_60px_-24px_rgba(11,37,64,0.35)] backdrop-blur-xl dark:border-white/10 dark:bg-[#071017] dark:shadow-[0_36px_100px_-58px_rgba(7,16,23,0.9)]">
+    <aside className="relative flex h-full flex-col overflow-hidden rounded-[1.9rem] shadow-[0_24px_60px_-24px_rgba(11,37,64,0.35)] dark:shadow-[0_36px_100px_-58px_rgba(7,16,23,0.9)]">
       {isWebsiteDevelopment ? (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[16rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden bg-slate-100/50 min-h-[16rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
           <SplineViewerScene
             sceneUrl={splineHeroScene.sceneUrl}
             fallbackImage={splineHeroScene.fallbackImage}
@@ -458,13 +458,9 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
             eager
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0)_60%,rgba(255,255,255,0.6))] dark:bg-[linear-gradient(180deg,transparent,rgba(7,16,23,0)_60%,rgba(7,16,23,0.2))]" />
-          <div className="hidden sm:inline-flex absolute left-4 top-4 items-center gap-2 rounded-full border border-slate-200/60 bg-white/70 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
-            <Icon className="h-4 w-4 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" strokeWidth={1.8} />
-            3D website route
-          </div>
         </figure>
       ) : (
-        <figure className="relative flex-1 overflow-hidden rounded-[1.45rem] bg-slate-100/50 min-h-[18rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
+        <figure className="relative flex-1 overflow-hidden bg-slate-100/50 min-h-[18rem] isolate [transform:translateZ(0)] sm:min-h-[22rem] lg:min-h-[28rem] dark:bg-[#071017]">
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-t from-[var(--surface-light-elevated)] to-transparent dark:from-[#071017] sm:hidden" />
           <img
             src={visual.hero.light}
@@ -479,10 +475,6 @@ function ServiceHeroVisual({ service, visual }: { service: Service; visual: Serv
             className="absolute inset-0 hidden h-full w-full object-contain sm:object-cover object-center transition duration-700 hover:scale-[1.015] dark:block"
             loading="eager"
           />
-          <div className="hidden sm:inline-flex absolute left-4 top-4 items-center gap-2 rounded-full border border-slate-200/60 bg-white/72 px-3 py-2 text-[0.68rem] font-black uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur-xl dark:border-white/14 dark:bg-white/10 dark:text-white/78 dark:shadow-[0_16px_44px_-32px_rgba(0,0,0,0.9)]">
-            <Icon className="h-4 w-4 text-[var(--brand-gold-muted)] dark:text-[var(--brand-gold)]" strokeWidth={1.8} />
-            Custom service visual
-          </div>
         </figure>
       )}
 
@@ -600,15 +592,13 @@ function ServiceSectionMedia({
   className?: string;
 }) {
   return (
-    <figure className={classNames("overflow-hidden rounded-[1.4rem] border border-[var(--border-soft)] bg-white/70 p-2 shadow-[0_22px_70px_-56px_rgba(11,37,64,0.7)] backdrop-blur-xl dark:bg-white/7", className)}>
-      <div className="relative overflow-hidden rounded-[1.05rem]">
-        <img
-          src={image}
-          alt={alt}
-          className={classNames("w-full object-contain sm:object-cover", compact ? "aspect-auto sm:aspect-[16/9]" : "aspect-auto sm:aspect-[4/3]")}
-          loading="lazy"
-        />
-      </div>
+    <figure className={classNames("overflow-hidden rounded-[1.4rem] shadow-[0_22px_70px_-56px_rgba(11,37,64,0.7)]", className)}>
+      <img
+        src={image}
+        alt={alt}
+        className={classNames("w-full object-contain sm:object-cover", compact ? "aspect-auto sm:aspect-[16/9]" : "aspect-auto sm:aspect-[4/3]")}
+        loading="lazy"
+      />
     </figure>
   );
 }
@@ -645,8 +635,8 @@ function ServiceSignalPanel({
   alt: string;
 }) {
   return (
-    <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-[var(--border-soft)] bg-white/72 p-3 shadow-[0_22px_70px_-54px_rgba(11,37,64,0.72)] backdrop-blur-xl dark:bg-white/7">
-      <div className="relative overflow-hidden rounded-[1.15rem]">
+    <div className="mt-8 overflow-hidden rounded-[1.5rem] shadow-[0_22px_70px_-54px_rgba(11,37,64,0.72)]">
+      <div className="relative overflow-hidden">
         <img src={image} alt={alt} className="aspect-[16/10] w-full object-cover" loading="lazy" />
       </div>
     </div>
