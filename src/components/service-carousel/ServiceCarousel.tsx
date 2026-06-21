@@ -201,7 +201,7 @@ function CarouselCard({
       <div className="relative min-h-[32rem] overflow-hidden rounded-[1.4rem] border border-slate-950/5 bg-[#f7f9ff] shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/10 dark:bg-[#071017] sm:min-h-[28rem] sm:rounded-[1.28rem] md:min-h-[30rem] lg:min-h-0 lg:aspect-[5/2]">
         <ThemedSlideImage
           slide={slide}
-          className="service-carousel-image absolute inset-0 h-full w-full object-cover object-[center_top] transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:object-[66%_center]"
+          className="service-carousel-image absolute inset-0 h-full w-full object-cover object-[right_top] transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:object-[66%_center]"
         />
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,rgba(247,249,255,0.1)_25%,rgba(247,249,255,0.95)_55%,rgba(247,249,255,1)_100%)] dark:bg-[linear-gradient(180deg,transparent_0%,rgba(7,16,23,0.1)_25%,rgba(7,16,23,0.95)_55%,rgba(7,16,23,1)_100%)] sm:hidden" />
