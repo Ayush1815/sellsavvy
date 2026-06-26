@@ -12,6 +12,7 @@ const FaqPage = lazy(() => import("./pages/FaqPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function withSuspense(element: ReactNode) {
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
       { path: "contact", element: withSuspense(<ContactPage />) },
       { path: "privacy", element: withSuspense(<PrivacyPolicyPage />) },
       { path: "terms", element: withSuspense(<TermsPage />) },
+      { path: "admin", element: withSuspense(<AdminPage />) },
       { path: "*", element: withSuspense(<NotFoundPage />) },
     ],
   },

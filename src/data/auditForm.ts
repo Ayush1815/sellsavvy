@@ -4,11 +4,11 @@ export interface AuditForm {
   business: string;
   platform: string[];
   otherPlatform: string;
-  monthlyRevenue: string;
   goal: string;
-  phone: string;
-  companyUrl: string;
-  website: string;
+  phone?: string;
+  companyUrl?: string;
+  source?: string;
+  description?: string;
 }
 
 export const initialAuditForm: AuditForm = {
@@ -17,9 +17,9 @@ export const initialAuditForm: AuditForm = {
   business: "",
   platform: [],
   otherPlatform: "",
-  monthlyRevenue: "$10k - $50k",
   goal: "Improve marketplace sales",
   phone: "",
   companyUrl: "",
+  description: "",
   website: "",
 };

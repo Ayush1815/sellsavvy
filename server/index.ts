@@ -13,6 +13,7 @@ const IS_PROD = process.env.NODE_ENV === "production";
 const SITE_URL = process.env.VITE_SITE_URL ?? "";
 const LEADS_DIR = path.join(__dirname, "data");
 const LEADS_FILE = path.join(LEADS_DIR, "leads.json");
+const LEDGER_FILE = path.join(LEADS_DIR, "ledger.json");
 const EVENTS_FILE = path.join(LEADS_DIR, "events.json");
 const WEBHOOK_URL = process.env.AUDIT_WEBHOOK_URL;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -25,20 +26,39 @@ type Lead = {
   email: string;
   business: string;
   platform: string;
-  monthlyRevenue: string;
   goal: string;
   phone?: string;
   companyUrl?: string;
   source?: string;
+  description?: string;
+  status?: string;
+  adminNotes?: string;
 };
 
 // ─── Data helpers ────────────────────────────────────────────────────────────
+
+async function initLedger() {
+  if (process.env.VERCEL) return;
+  try {
+    await fs.access(LEDGER_FILE);
+  } catch {
+    try {
+      const raw = await fs.readFile(LEADS_FILE, "utf8");
+      await fs.writeFile(LEDGER_FILE, raw, "utf8");
+      console.log("[init] Created ledger.json from leads.json");
+    } catch {
+      // Ignore if leads.json also doesn't exist
+    }
+  }
+}
+initLedger();
 
 async function ensureDataDir() {
   await fs.mkdir(LEADS_DIR, { recursive: true });
 }
 
 async function appendJson(file: string, entry: unknown) {
+  if (process.env.VERCEL) return; // Skip writing to disk on Vercel
   await ensureDataDir();
   let list: unknown[] = [];
   try {
@@ -90,8 +110,8 @@ async function sendLeadEmail(lead: Lead): Promise<void> {
                 ["Email", `<a href="mailto:${lead.email}" style="color:#805113">${lead.email}</a>`],
                 ["Business", lead.business],
                 ["Platform", lead.platform],
-                ["Monthly Revenue", lead.monthlyRevenue],
                 ["Growth Goal", lead.goal],
+                ["Description", lead.description ? `<div style="white-space:pre-wrap;font-size:14px">${lead.description}</div>` : "—"],
                 ["Phone", lead.phone ?? "—"],
                 ["Store URL", lead.companyUrl ? `<a href="${lead.companyUrl}" style="color:#805113">${lead.companyUrl}</a>` : "—"],
                 ["Source", lead.source ?? "—"],
@@ -280,7 +300,7 @@ app.get("/api/health", (_req, res) => {
 
 app.post("/api/audit", auditLimiter, async (req, res) => {
   try {
-    const body = req.body as Record<string, string | undefined>;
+    const body = req.body as Record<string, any>;
 
     // Honeypot check
     if (body.website?.trim()) {
@@ -291,11 +311,11 @@ app.post("/api/audit", auditLimiter, async (req, res) => {
     const name = body.name?.trim() ?? "";
     const email = body.email?.trim() ?? "";
     const business = body.business?.trim() ?? "";
-    const platform = body.platform?.trim() ?? "";
-    const monthlyRevenue = body.monthlyRevenue?.trim() ?? "";
+    const platformRaw = body.platform;
+    const platform = Array.isArray(platformRaw) ? platformRaw.join(", ") : (typeof platformRaw === "string" ? platformRaw.trim() : "");
     const goal = body.goal?.trim() ?? "";
 
-    if (!name || !business || !platform || !monthlyRevenue || !goal) {
+    if (!name || !business || !platform || !goal) {
       res.status(400).json({ error: "Please complete all required fields." });
       return;
     }
@@ -312,14 +332,17 @@ app.post("/api/audit", auditLimiter, async (req, res) => {
       email,
       business,
       platform,
-      monthlyRevenue,
       goal,
       phone: body.phone?.trim() || undefined,
       companyUrl: body.companyUrl?.trim() || undefined,
       source: body.source?.trim() || req.get("referer") || undefined,
+      description: body.description?.trim() || undefined,
+      status: "unattended",
+      adminNotes: "",
     };
 
     await appendJson(LEADS_FILE, lead);
+    await appendJson(LEDGER_FILE, lead);
 
     // Fire-and-forget: webhook + email — never block the 201 response
     void (async () => {
@@ -337,6 +360,194 @@ app.post("/api/audit", auditLimiter, async (req, res) => {
   } catch (error) {
     console.error("[audit]", error);
     res.status(500).json({ error: "Server error. Please try again shortly." });
+  }
+});
+
+app.get("/api/admin/leads", async (req, res) => {
+  try {
+    const adminUsername = process.env.VITE_ADMIN_USERNAME;
+    const adminSecret = process.env.VITE_ADMIN_SECRET;
+    const authHeader = req.headers.authorization;
+    
+    if (!adminUsername || !adminSecret || !authHeader || !authHeader.startsWith("Basic ")) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    const base64Credentials = authHeader.split(" ")[1];
+    const credentials = Buffer.from(base64Credentials, "base64").toString("ascii");
+    const [username, password] = credentials.split(":");
+
+    if (username !== adminUsername || password !== adminSecret) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+    
+    let list: unknown[] = [];
+    if (!process.env.VERCEL) {
+      try {
+        const raw = await fs.readFile(LEADS_FILE, "utf8");
+        list = JSON.parse(raw);
+        if (!Array.isArray(list)) list = [];
+      } catch {
+        list = [];
+      }
+    }
+    
+    // Return newest first
+    res.json(list.reverse());
+  } catch (error) {
+    console.error("[admin leads]", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.patch("/api/admin/leads/:id", express.json(), async (req, res) => {
+  try {
+    const adminUsername = process.env.VITE_ADMIN_USERNAME;
+    const adminSecret = process.env.VITE_ADMIN_SECRET;
+    const authHeader = req.headers.authorization;
+    
+    if (!adminUsername || !adminSecret || !authHeader || !authHeader.startsWith("Basic ")) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    const base64Credentials = authHeader.split(" ")[1];
+    const credentials = Buffer.from(base64Credentials, "base64").toString("ascii");
+    const [username, password] = credentials.split(":");
+
+    if (username !== adminUsername || password !== adminSecret) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    if (process.env.VERCEL) {
+      res.status(400).json({ error: "Updates are disabled on Vercel deployments." });
+      return;
+    }
+
+    const leadId = req.params.id;
+    const { status, adminNotes } = req.body;
+
+    const raw = await fs.readFile(LEADS_FILE, "utf8");
+    const list: Lead[] = JSON.parse(raw);
+    
+    const leadIndex = list.findIndex(l => l.id === leadId);
+    if (leadIndex === -1) {
+      res.status(404).json({ error: "Lead not found" });
+      return;
+    }
+
+    if (status !== undefined) list[leadIndex].status = status;
+    if (adminNotes !== undefined) list[leadIndex].adminNotes = adminNotes;
+
+    await fs.writeFile(LEADS_FILE, JSON.stringify(list, null, 2), "utf8");
+    
+    res.json(list[leadIndex]);
+  } catch (error) {
+    console.error("[admin leads patch]", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.post("/api/admin/leads", express.json(), async (req, res) => {
+  try {
+    const adminUsername = process.env.VITE_ADMIN_USERNAME;
+    const adminSecret = process.env.VITE_ADMIN_SECRET;
+    const authHeader = req.headers.authorization;
+    
+    if (!adminUsername || !adminSecret || !authHeader || !authHeader.startsWith("Basic ")) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    const base64Credentials = authHeader.split(" ")[1];
+    const credentials = Buffer.from(base64Credentials, "base64").toString("ascii");
+    const [username, password] = credentials.split(":");
+
+    if (username !== adminUsername || password !== adminSecret) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    if (process.env.VERCEL) {
+      res.status(400).json({ error: "Updates are disabled on Vercel deployments." });
+      return;
+    }
+
+    const lead: Lead = {
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+      name: req.body.name,
+      email: req.body.email,
+      business: req.body.business,
+      platform: req.body.platform,
+      goal: req.body.goal,
+      phone: req.body.phone,
+      companyUrl: req.body.companyUrl,
+      description: req.body.description,
+      status: "unattended",
+      adminNotes: req.body.adminNotes || "",
+      source: "Manual Addition",
+    };
+
+    await appendJson(LEADS_FILE, lead);
+    await appendJson(LEDGER_FILE, lead);
+
+    res.status(201).json(lead);
+  } catch (error) {
+    console.error("[admin leads post]", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.delete("/api/admin/leads/:id", async (req, res) => {
+  try {
+    const adminUsername = process.env.VITE_ADMIN_USERNAME;
+    const adminSecret = process.env.VITE_ADMIN_SECRET;
+    const authHeader = req.headers.authorization;
+    
+    if (!adminUsername || !adminSecret || !authHeader || !authHeader.startsWith("Basic ")) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    const base64Credentials = authHeader.split(" ")[1];
+    const credentials = Buffer.from(base64Credentials, "base64").toString("ascii");
+    const [username, password] = credentials.split(":");
+
+    if (username !== adminUsername || password !== adminSecret) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    if (process.env.VERCEL) {
+      res.status(400).json({ error: "Deletes are disabled on Vercel deployments." });
+      return;
+    }
+
+    const leadId = req.params.id;
+
+    const raw = await fs.readFile(LEADS_FILE, "utf8");
+    const list: Lead[] = JSON.parse(raw);
+    
+    const leadIndex = list.findIndex(l => l.id === leadId);
+    if (leadIndex === -1) {
+      res.status(404).json({ error: "Lead not found" });
+      return;
+    }
+
+    // Remove from leads.json
+    list.splice(leadIndex, 1);
+    await fs.writeFile(LEADS_FILE, JSON.stringify(list, null, 2), "utf8");
+    
+    // Note: Deliberately NOT removing from ledger.json to keep it immutable!
+
+    res.json({ success: true });
+  } catch (error) {
+    console.error("[admin leads delete]", error);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
@@ -378,6 +589,10 @@ if (existsSync(distPath)) {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`SellSavvy API listening on http://localhost:${PORT} [${IS_PROD ? "production" : "development"}]`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`SellSavvy API listening on http://localhost:${PORT} [${IS_PROD ? "production" : "development"}]`);
+  });
+}
+
+export default app;

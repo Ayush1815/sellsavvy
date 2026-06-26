@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
             <li>Work or business email address</li>
             <li>Business / store name</li>
             <li>Primary sales platform (e.g. Amazon, Shopify)</li>
-            <li>Approximate monthly revenue band</li>
+
             <li>Main growth goal</li>
             <li>Phone number <span className="text-slate-500">(optional)</span></li>
             <li>Store URL <span className="text-slate-500">(optional)</span></li>

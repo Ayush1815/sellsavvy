@@ -226,22 +226,6 @@ export function AuditFormSection() {
                 </AnimatePresence>
               </div>
 
-              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
-                Monthly revenue
-                <CustomSelect
-                  value={form.monthlyRevenue}
-                  onChange={(value) => updateField("monthlyRevenue", value)}
-                  options={[
-                    "Under $10k",
-                    "$10k - $50k",
-                    "$50k - $150k",
-                    "$150k+",
-                    "Pre-launch"
-                  ]}
-                  className={fieldBase}
-                />
-              </label>
-
               <label className="block text-sm font-bold text-slate-800 dark:text-slate-100 sm:col-span-2">
                 Growth goal
                 <CustomSelect
@@ -255,6 +239,20 @@ export function AuditFormSection() {
                     "Need ongoing growth support"
                   ]}
                   className={fieldBase}
+                />
+              </label>
+            </div>
+
+            <div className="mt-5">
+              <label className="block text-sm font-bold text-slate-800 dark:text-slate-100">
+                Additional details <span className="text-slate-500 font-normal">(optional)</span>
+                <textarea
+                  className={classNames(fieldBase, "mt-2")}
+                  rows={3}
+                  placeholder="Tell us a bit more about your store, challenges, or what you're looking for..."
+                  value={form.description}
+                  onChange={(e) => updateField("description", e.target.value)}
+                  onFocus={() => trackEvent("form_focus", { field: "description" })}
                 />
               </label>
             </div>
@@ -292,8 +290,8 @@ export function AuditFormSection() {
                 >
                   <p className="font-bold">Request received. Here is what happens next:</p>
                   <ol className="list-decimal space-y-1 pl-5 leading-7">
-                    <li>We review your channels and revenue band.</li>
-                    <li>You receive a focused audit summary within {siteConfig.responseTime.toLowerCase()}.</li>
+                    <li>We review your channels and growth goals.</li>
+                    <li>You receive a focused audit summary {siteConfig.responseTime.toLowerCase()}.</li>
                     <li>We walk through priorities on a no-pressure call.</li>
                   </ol>
                   {siteConfig.calendlyUrl ? (
