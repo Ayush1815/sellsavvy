@@ -6,12 +6,12 @@ import { fileURLToPath } from "url";
 import "dotenv/config";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
+import crypto from "crypto";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT ?? 3001);
 const IS_PROD = process.env.NODE_ENV === "production";
 const SITE_URL = process.env.VITE_SITE_URL ?? "";
-const LEADS_DIR = path.join(__dirname, "data");
+const LEADS_DIR = path.join(process.cwd(), "server", "data");
 const LEADS_FILE = path.join(LEADS_DIR, "leads.json");
 const LEDGER_FILE = path.join(LEADS_DIR, "ledger.json");
 const EVENTS_FILE = path.join(LEADS_DIR, "events.json");
@@ -581,7 +581,7 @@ app.post("/api/analytics", analyticsLimiter, async (req, res) => {
 
 // ─── Static SPA ───────────────────────────────────────────────────────────────
 
-const distPath = path.join(__dirname, "../dist");
+const distPath = path.join(process.cwd(), "dist");
 if (existsSync(distPath)) {
   app.use(express.static(distPath, { maxAge: IS_PROD ? "1y" : 0 }));
   app.get(/^(?!\/api).*/, (_req, res) => {
